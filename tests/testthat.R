@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(aug)
+library(rmot)
 
-test_check("aug")
+test_check("rmot")

@@ -1,11 +1,11 @@
-#' The 'augGauss' package.
+#' The 'rmot' package.
 #'
 #' @description A DESCRIPTION OF THE PACKAGE
 #'
 #' @docType package
-#' @name augGauss-package
-#' @aliases augGauss
-#' @useDynLib augGauss, .registration = TRUE
+#' @name rmot-package
+#' @aliases rmot
+#' @useDynLib rmot, .registration = TRUE
 #' @import methods
 #' @import Rcpp
 #' @importFrom rstan sampling

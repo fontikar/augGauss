@@ -1,14 +1,14 @@
 #' Assign data to template
 #'
-#' @param model_template output from aug_model
+#' @param model_template output from rmot_model
 #' @param ... data-masking name-value pairs
 #'
 #' @return updated named list with your data assigned to Stan model parameters
 #' @export
 #'
 #' @examples
-#' aug_model("linear") |> aug_assign_data(X = Loblolly$age, Y = Loblolly$height)
-aug_assign_data <- function(model_template, ...){
+#' rmot_model("linear") |> rmot_assign_data(X = Loblolly$age, Y = Loblolly$height)
+rmot_assign_data <- function(model_template, ...){
   # Grab user expressions
   user_code <- rlang::enexprs(..., .check_assign = TRUE)
 
