@@ -1,4 +1,4 @@
-#' Select data configuration template for rmot supported model
+#' Select data configuration template for aug supported model
 #'
 #' @param model model name character string
 #'
@@ -6,17 +6,17 @@
 #' @export
 #'
 #' @examples
-#' rmot_model("linear")
+#' aug_model("linear")
 
-rmot_model <- function(model=NULL){
+aug_model <- function(model=NULL){
 
-  #TODO: Need a mechanism to check model requested in one that is supported by rmot
+  #TODO: Need a mechanism to check model requested in one that is supported by aug
 
   output <- switch(model,
-                   linear = rmot_lm(),
-                   constant_single = rmot_cgs())
+                   linear = aug_lm(),
+                   constant_single = aug_cgs())
 
-  class(output) <- "rmot_object"
+  class(output) <- "aug_object"
 
   return(output)
 }
@@ -25,7 +25,7 @@ rmot_model <- function(model=NULL){
 #' @keywords internal
 #' @noRd
 
-rmot_lm <- function(){
+aug_lm <- function(){
   list(X = NULL,
        Y = NULL,
        N = NULL,
@@ -36,7 +36,7 @@ rmot_lm <- function(){
 #' @keywords internal
 #' @noRd
 
-rmot_cgs <- function(){
+aug_cgs <- function(){
   list(N_obs = NULL,
        N_ind = NULL,
        S_obs = NULL,
