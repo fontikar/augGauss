@@ -55,10 +55,32 @@ sim_data <- simulate_data(nSubj = 10, nGroups = 3, save_data = TRUE)
 
 ## Template for model
 
-<!-- Need info from JL about what are the parameters that we feed data into -->
+<!-- Need info from JL about what are the parameters that we feed data into
+It looks like the model is run for each group separately? 
+Can the model be set up to accept less complicated data? -->
 
 ```{r}
 aug_model("gaussian")
 ```
 
+## Assign tabular data into model template
 
+```{r}
+group1_data <- sim_data |> 
+  dplyr::filter(group == "group1")
+
+
+group1_data |> transform_data()
+
+aug_model("gaussian") |> 
+  aug_assign_data(subj = group1_data$subj,
+                  responses = group1_dat)
+```
+
+
+
+## Model diagnostics
+
+## Model inspection
+
+<!-- What happens to HDI when nGroups > 3? -->

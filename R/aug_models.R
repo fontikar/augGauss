@@ -54,12 +54,10 @@ aug_cgs <- function(){
 #' @noRd
 
 aug_gauss <- function(){
-  list(nSubj = NULL,
+  list(subj = NULL,
+       responses = NULL,
+       nSubj = NULL,
        nStim = NULL,
-       S_obs = NULL,
-       census = NULL,
-       census_interval = NULL,
-       id_factor = NULL,
-       S_0_obs = NULL,
+       xs = NULL,
        model = "aug_gauss")
 }

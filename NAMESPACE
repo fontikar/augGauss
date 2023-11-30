@@ -3,6 +3,7 @@
 export(aug_assign_data)
 export(aug_model)
 export(aug_run)
+export(simulate_data)
 import(Rcpp)
 import(methods)
 importFrom(RcppParallel,RcppParallelLibs)
