@@ -17,7 +17,8 @@ aug_run <- function(model_template, ...) {
   # Detect model
   out <- switch(model_template$model,
          linear = rstan::sampling(stanmodels$linear, data = model_template, ...),
-         constant_single = rstan::sampling(stanmodels$constant_single, data = model_template, ...))
+         constant_single = rstan::sampling(stanmodels$constant_single, data = model_template, ...),
+         aug_gauss = rstan::sampling(stanmodels$aug_gaus, data = model_template, ...))
 
   return(out)
 }

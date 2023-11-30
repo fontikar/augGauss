@@ -14,7 +14,8 @@ aug_model <- function(model=NULL){
 
   output <- switch(model,
                    linear = aug_lm(),
-                   constant_single = aug_cgs())
+                   constant_single = aug_cgs(),
+                   gaussian = aug_gauss())
 
   class(output) <- "aug_object"
 
@@ -48,4 +49,17 @@ aug_cgs <- function(){
 }
 
 
+#' Data configuration template for augmented Gaussian model
+#' @keywords internal
+#' @noRd
 
+aug_gauss <- function(){
+  list(nSubj = NULL,
+       nStim = NULL,
+       S_obs = NULL,
+       census = NULL,
+       census_interval = NULL,
+       id_factor = NULL,
+       S_0_obs = NULL,
+       model = "aug_gauss")
+}

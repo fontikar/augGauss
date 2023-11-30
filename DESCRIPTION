@@ -15,10 +15,12 @@ Biarch: true
 Depends: 
     R (>= 3.4.0)
 Imports: 
+    dplyr,
     methods,
     purrr,
     Rcpp (>= 0.12.0),
     RcppParallel (>= 5.0.1),
+    readr,
     rlang,
     rstan (>= 2.18.1),
     rstantools (>= 2.3.1.1),

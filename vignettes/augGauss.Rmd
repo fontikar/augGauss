@@ -29,40 +29,36 @@ remotes::install_github("traitecoevo/augGauss")
 library(augGauss)
 ```
 
-## {augGauss} supported models
+## Getting started
 
-### Linear model
-
-```{r example}
-aug_model("linear") |>
-  aug_assign_data(X = Loblolly$age,
-                   Y = Loblolly$height,
-                   N = nrow(Loblolly)) |>
-  aug_run()
-```
-
-### Constant Growth - Single Species
+We will be using some example data to demonstrate the main functions of `augGauss`
 
 ```{r}
-# Create data
-true <- c(seq(from=1, by=2.5, length.out=7),
-          seq(from=2, by=2, length.out=7))
-y <- true + true*rnorm(n=14, 0, 0.02) + rnorm(n=14, 0, 0.2)
+demo_data
 
-# Configure model template
-cgs_output <- aug_model("constant_single") |>
-  aug_assign_data(N_obs = length(y),
-                   N_ind = 2,
-                   S_obs = y,
-                   census = rep(seq(from=1, to=7, by=1), times=2), #vector length N_obs
-                   census_interval = rep(5, times=length(y)), #Vector length N_obs
-                   id_factor = c(rep(1, times=7), rep(2, times=7)), #Vector length N_obs
-                   S_0_obs = y[c(1, 8)] #vector length N_ind
-                   )  |>
-  aug_run()
+?demo_data
+```
 
-# Look at output
-cgs_output
+## Simulate gradients from raw data
+
+```{r}
+sim_data <- simulate_data(nSubj = 10, nGroups = 3)
+
+sim_data
+```
+
+You can save the simulated data by setting the `save_data` argument to `TRUE`
+
+```{r, eval=FALSE}
+sim_data <- simulate_data(nSubj = 10, nGroups = 3, save_data = TRUE)
+```
+
+## Template for model
+
+<!-- Need info from JL about what are the parameters that we feed data into -->
+
+```{r}
+aug_model("gaussian")
 ```
 
 
