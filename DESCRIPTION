@@ -16,6 +16,8 @@ Depends:
     R (>= 3.4.0)
 Imports: 
     dplyr,
+    forcats,
+    ggplot2,
     methods,
     purrr,
     Rcpp (>= 0.12.0),

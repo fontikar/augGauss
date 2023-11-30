@@ -27,6 +27,8 @@ transform_data <- function(sim_data, dimVals = seq(-.5, +.5, .05), groupNames = 
                      xs = dimVals)
   }
   names(out) <- groupNames
-
   return(out)
 }
+
+
+

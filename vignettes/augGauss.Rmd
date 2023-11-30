@@ -32,6 +32,7 @@ library(augGauss)
 ## Getting started
 
 We will be using some example data to demonstrate the main functions of `augGauss`
+<!-- or can ditch if we will be simulating it -->
 
 ```{r}
 demo_data
@@ -53,6 +54,15 @@ You can save the simulated data by setting the `save_data` argument to `TRUE`
 sim_data <- simulate_data(nSubj = 10, nGroups = 3, save_data = TRUE)
 ```
 
+Plot the simulated gradients
+
+<!-- Currently hard coded for 3 groups - need to work on flexibility -->
+
+```{r}
+plot_simulated_data(sim_data)
+```
+
+
 ## Template for model
 
 <!-- Need info from JL about what are the parameters that we feed data into
@@ -65,19 +75,24 @@ aug_model("gaussian")
 
 ## Assign tabular data into model template
 
+### Option 1
+
 ```{r}
+transformed_data <- sim_data |> transform_data()
+
 group1_data <- sim_data |> 
-  dplyr::filter(group == "group1")
+  dplyr::filter(group == "group1") |> 
+  transform_data() |> 
+  purrr::pluck(1)
 
-
-group1_data |> transform_data()
-
-aug_model("gaussian") |> 
-  aug_assign_data(subj = group1_data$subj,
-                  responses = group1_dat)
+model_output <- aug_model("gaussian") |> 
+  aug_assign_data(subj = group1_data$subj, 
+                    responses = group1_data$responses, 
+                    nSubj = group1_data$nSubj, 
+                    nStim = group1_data$nStim, 
+                    xs = group1_data$xs) |> 
+  aug_run()
 ```
-
-
 
 ## Model diagnostics
 
