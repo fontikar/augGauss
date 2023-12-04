@@ -1,4 +1,6 @@
 #' Simulate augmented Gaussian gradients
+#'
+#' @description
 #' This function simulates augmented Gaussian gradients for groups of subjects
 #' @param nSubj number of subjects
 #' @param nGroups number of experimental groups
@@ -13,6 +15,7 @@
 #'
 #' @return tibble of simulated data
 #' @export
+#' @author Jessica Lee
 #'
 #' @examples
 #' simulate_data

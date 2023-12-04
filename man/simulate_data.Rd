@@ -2,8 +2,7 @@
 % Please edit documentation in R/simulate_data.R
 \name{simulate_data}
 \alias{simulate_data}
-\title{Simulate augmented Gaussian gradients
-This function simulates augmented Gaussian gradients for groups of subjects}
+\title{Simulate augmented Gaussian gradients}
 \usage{
 simulate_data(
   nSubj,
@@ -43,9 +42,11 @@ simulate_data(
 tibble of simulated data
 }
 \description{
-Simulate augmented Gaussian gradients
 This function simulates augmented Gaussian gradients for groups of subjects
 }
 \examples{
 simulate_data
+}
+\author{
+Jessica Lee
 }

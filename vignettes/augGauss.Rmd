@@ -51,12 +51,12 @@ sim_data
 You can save the simulated data by setting the `save_data` argument to `TRUE`
 
 ```{r, eval=FALSE}
-sim_data <- simulate_data(nSubj = 10, nGroups = 3, save_data = TRUE)
+sim_data <- simulate_data(nSubj = 10, nGroups = 2, save_data = TRUE)
 ```
 
 Plot the simulated gradients
 
-<!-- Currently hard coded for 3 groups - need to work on flexibility -->
+<!-- Currently hard coded for 3 groups - possibly need to work on flexibility -->
 
 ```{r}
 plot_simulated_data(sim_data)
@@ -91,8 +91,30 @@ model_output <- aug_model("gaussian") |>
                     nSubj = group1_data$nSubj, 
                     nStim = group1_data$nStim, 
                     xs = group1_data$xs) |> 
-  aug_run()
+  aug_run(iter = 1000, chains = 2)
 ```
+
+
+```{r}
+new <- augGauss::Run_Model(transformed_data = group1_data, iter = 100, chains = 2)
+
+new <- rstan::sampling(object = stanmodels$aug_gaus,
+                       data = group1_data,
+                       algorithm = "NUTS",
+                       iter = 100, chains = 2,
+                       cores = future::availableCores())
+```
+
+```{r}
+model_output |> rstan::traceplot()
+
+diag <- rstan::get_sampler_params(model_output)
+
+samples <- rstan::extract(model_output)
+
+summary <- rstan::summary(model_output)
+```
+
 
 ## Model diagnostics
 
