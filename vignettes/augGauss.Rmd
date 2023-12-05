@@ -96,13 +96,9 @@ model_output <- aug_model("gaussian") |>
 
 
 ```{r}
-new <- augGauss::Run_Model(transformed_data = group1_data, iter = 100, chains = 2)
+new <- Run_Model(transformed_data = group1_data, iter = 100, chains = 2)
 
-new <- rstan::sampling(object = stanmodels$aug_gaus,
-                       data = group1_data,
-                       algorithm = "NUTS",
-                       iter = 100, chains = 2,
-                       cores = future::availableCores())
+combined <- aug_fit(transformed_data = transformed_data, iter = 100, chains = 2)
 ```
 
 ```{r}
