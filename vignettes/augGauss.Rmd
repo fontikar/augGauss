@@ -63,20 +63,6 @@ plot_simulated_data(sim_data)
 ```
 
 
-## Template for model
-
-<!-- Need info from JL about what are the parameters that we feed data into
-It looks like the model is run for each group separately? 
-Can the model be set up to accept less complicated data? -->
-
-```{r}
-aug_model("gaussian")
-```
-
-## Assign tabular data into model template
-
-### Option 1
-
 ```{r}
 transformed_data <- sim_data |> transform_data()
 
@@ -85,20 +71,13 @@ group1_data <- sim_data |>
   transform_data() |> 
   purrr::pluck(1)
 
-model_output <- aug_model("gaussian") |> 
-  aug_assign_data(subj = group1_data$subj, 
-                    responses = group1_data$responses, 
-                    nSubj = group1_data$nSubj, 
-                    nStim = group1_data$nStim, 
-                    xs = group1_data$xs) |> 
-  aug_run(iter = 1000, chains = 2)
 ```
 
 
 ```{r}
 new <- Run_Model(transformed_data = group1_data, iter = 100, chains = 2)
 
-combined <- aug_fit(transformed_data = transformed_data, iter = 100, chains = 2)
+combined <- aug_fit_model(transformed_data = transformed_data, iter = 100, chains = 2)
 ```
 
 ```{r}
