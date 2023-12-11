@@ -32,7 +32,7 @@ simulate_data <- function(nSubj, nGroups,
   df <- list()
 
   for (g in 1:nGroups) {
-
+  # browser()
     # generate individual parameters
     m <- rnorm(nSubj, M[g], .1)
     h = rnorm(nSubj, H[g], 1)
@@ -65,10 +65,10 @@ simulate_data <- function(nSubj, nGroups,
   }
 
   out <- do.call("rbind", df)
-  out <- out %>%
+  out <- out |>
     dplyr::mutate(x = as.numeric(as.character(x)),
-           y = as.numeric(as.character(y)),
-           subj = as.numeric(as.character(subj))) |>
+                  y = as.numeric(as.character(y)),
+                  subj = as.numeric(as.character(subj))) |>
     dplyr::tibble()
 
   # Check if path exists, if not, create
@@ -79,32 +79,6 @@ simulate_data <- function(nSubj, nGroups,
   if(save_data == TRUE)
   readr::write_csv(out, paste0(path,Sys.Date(),"_simulated_data",".csv"))
   else return(out)
-}
-
-
-plot_simulated_data <- function(sim_data, dimVals = seq(-.5, +.5, .05)){
-  layers <- list(
-    ggplot2::geom_line(size = 1.5),
-    ggplot2::geom_point(shape = rep(c(21, 24, 22), each=length(dimVals)), fill = "white", size = 2),
-    ggplot2::geom_vline(xintercept = 0, linetype = "dotted", colour = "grey"),
-    ggplot2::scale_x_continuous(limits = c(min(dimVals), max(dimVals)), breaks = dimVals, labels = c(min(dimVals), rep("", (length(dimVals) - 3)/2), "CS+", rep("", (length(dimVals) - 3)/2), max(dimVals))),
-    ggplot2::scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, 20)),
-    ggplot2::scale_colour_manual(values = c("#301A4B", "#6DB1BF", "#D4775E")),
-    ggplot2::labs(x = "stimulus", y = "mean response"),
-    ggplot2::theme_classic(),
-    ggplot2::guides(colour = ggplot2::guide_legend(override.aes = list(shape = c(21, 24, 22))))
-  )
-
-  gradients <- sim_data %>%
-    dplyr::arrange(subj, group, x) %>%
-    dplyr::mutate(group = forcats::fct_relevel(group, unique(group))) %>%
-    dplyr::group_by(group, x) %>%
-    dplyr::summarise(y = mean(y))
-
-  fig <- ggplot2::ggplot(gradients, ggplot2::aes(x = x, y = y, group = group, colour = group,
-                                                 shape = group)) + layers
-
-  return(fig)
 }
 
 

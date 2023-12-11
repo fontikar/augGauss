@@ -1,3 +1,25 @@
+#' @title Fit an Augmented Gaussian Bayesian Model
+#'
+#' @description
+#' A short description...
+#'
+#' @param transformed_data data list object created using `transform_data()`
+#'
+#' @param ... arguments passed to rstan::sampling()
+#' @details
+#' The data must in a list object
+#' - `nSubj`
+#' - `nStim`
+#' - `xs`
+#' @return large list object containing ...
+#' @author Jessica Lee
+#' @examples
+#' \dontrun{
+#' demo_data |>
+#' transform_data() |>
+#' aug_fit_model(iter = 100, chains = 2)
+#' }
+#'
 #' @export
 
 aug_fit_model <- function(transformed_data, ...) {
@@ -28,7 +50,8 @@ aug_fit_model <- function(transformed_data, ...) {
   return(out)
 }
 
-#' @export
+#' @author Jessica Lee
+#' @keywords internal
 
 Run_Model <- function(transformed_data, ...) {
 

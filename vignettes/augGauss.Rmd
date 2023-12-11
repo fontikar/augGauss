@@ -51,14 +51,14 @@ sim_data
 You can save the simulated data by setting the `save_data` argument to `TRUE`
 
 ```{r, eval=FALSE}
-sim_data <- simulate_data(nSubj = 10, nGroups = 2, save_data = TRUE)
+sim_data <- simulate_data(nSubj = 10, nGroups = 3, save_data = TRUE)
 ```
 
 Plot the simulated gradients
 
 <!-- Currently hard coded for 3 groups - possibly need to work on flexibility -->
 
-```{r}
+```{r, eval = FALSE}
 plot_simulated_data(sim_data)
 ```
 
