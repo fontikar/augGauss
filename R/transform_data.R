@@ -1,3 +1,5 @@
+#' @export
+
 transform_data <- function(sim_data, dimVals = seq(-.5, +.5, .05), groupNames = NULL) {
 
   # This function reads data in long format and prepares the data list for stan
@@ -16,8 +18,8 @@ transform_data <- function(sim_data, dimVals = seq(-.5, +.5, .05), groupNames = 
   out <- vector("list", length(groupNames))
 
   for (i in 1:length(groupNames)) {
-    subset_data <- sim_data %>%
-      dplyr::filter(group == groupNames[i]) %>%
+    subset_data <- sim_data |>
+      dplyr::filter(group == groupNames[i]) |>
       dplyr::arrange(subj, x)
     out[[i]] <- list(subj = subset_data[["subj"]],
                      responses = matrix(subset_data[["y"]], ncol = length(dimVals),

@@ -2,6 +2,7 @@
 
 export(aug_fit_model)
 export(simulate_data)
+export(transform_data)
 import(Rcpp)
 import(methods)
 importFrom(RcppParallel,RcppParallelLibs)

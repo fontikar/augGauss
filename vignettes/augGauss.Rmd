@@ -62,34 +62,11 @@ Plot the simulated gradients
 plot_simulated_data(sim_data)
 ```
 
-
 ```{r}
 transformed_data <- sim_data |> transform_data()
 
-group1_data <- sim_data |> 
-  dplyr::filter(group == "group1") |> 
-  transform_data() |> 
-  purrr::pluck(1)
-
-```
-
-
-```{r}
-new <- Run_Model(transformed_data = group1_data, iter = 100, chains = 2)
-
 combined <- aug_fit_model(transformed_data = transformed_data, iter = 100, chains = 2)
 ```
-
-```{r}
-model_output |> rstan::traceplot()
-
-diag <- rstan::get_sampler_params(model_output)
-
-samples <- rstan::extract(model_output)
-
-summary <- rstan::summary(model_output)
-```
-
 
 ## Model diagnostics
 
