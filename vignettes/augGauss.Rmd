@@ -68,6 +68,13 @@ transformed_data <- sim_data |> transform_data()
 combined <- aug_fit_model(transformed_data = transformed_data, iter = 100, chains = 2)
 ```
 
+# Highest posterior densities
+
+```{r}
+Get_HDIs(combined)
+```
+
+
 ## Model diagnostics
 
 ## Model inspection
