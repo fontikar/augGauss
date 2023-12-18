@@ -45,8 +45,8 @@ aug_fit_model <- function(transformed_data, ...) {
 
   }
 
-  out <- list(mcmc_out, samples)
-  names(out) <- c("mcmc_out", "samples")
+  out <- list(mcmc_out, samples, transformed_data)
+  names(out) <- c("mcmc_out", "samples", "transformed_data")
   return(out)
 }
 
