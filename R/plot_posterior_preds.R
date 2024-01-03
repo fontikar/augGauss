@@ -18,7 +18,7 @@ Plot_Posterior_Preds_by_group <- function(aug_model_output,
                                           save_output = FALSE,
                                           path = "output/"){
 
-  #TODO: Check group names
+  # Check if group name exists
   if(! group_name %in% names(aug_model_output$mcmc_out))
     rlang::abort(paste(group_name, "does not match levels in grouping variable, check spelling and try again!"))
 
