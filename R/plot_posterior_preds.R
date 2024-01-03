@@ -1,3 +1,114 @@
+#' Plot posterior predictions for a group
+#'
+#' @param aug_model_output model output from `aug_run`
+#' @param group_name character string of one group
+#' @param nSamp ...
+#' @param include_preds logical include predictions or not
+#' @param labels logical whether to display labels in plot
+#' @param save_output logical whether to save output
+#' @param path path to save output
+#'
+#' @export
+
+Plot_Posterior_Preds_by_group <- function(aug_model_output,
+                                          group_name,
+                                          nSamp = 50,
+                                          include_preds = FALSE,
+                                          labels = FALSE,
+                                          save_output = FALSE,
+                                          path = "output/"){
+
+  #TODO: Check group names
+  if(! group_name %in% names(aug_model_output$mcmc_out))
+    rlang::abort(paste(group_name, "does not match levels in grouping variable, check spelling and try again!"))
+
+  # Get group predictions
+  group_output <- Get_Posterior_Preds_by_group(aug_model_output, group_name, nSamp)
+
+  cs_loc <- (group_output$nStim-1)/2 # only if CS+ is in the middle of the dimension
+  nStim <- group_output$nStim
+  post_preds <- group_output$post_preds
+
+  grad_layers <- list(
+    ggplot2::geom_line(stat = "identity", linewidth = 1.25),
+    ggplot2::labs(title = "", x = "dimension", y = "responding"),
+    ggplot2::scale_colour_manual(values = c("black", "red")),
+    ggplot2::geom_vline(xintercept = cs_loc, linetype = "dotted", colour = "black"),
+    ggplot2::scale_x_continuous(limits = c(1, nStim), breaks = c(1, cs_loc, nStim),
+                                labels = c(min(-.5), 0, max(+.5))),
+    ggplot2::scale_y_continuous(limits = c(0, 140), breaks = c(0, 50, 100)),
+    ggplot2::theme_classic(),
+    ggplot2::theme(panel.background = ggplot2::element_rect(colour = "black", linewidth = 0.5, linetype = "solid", fill = NA),
+                   legend.position = "none")
+  )
+
+  # Only gradients (default)
+  grad_fig <-
+    ggplot2::ggplot(post_preds, ggplot2::aes(y = .data$response, x = .data$dim)) +
+    grad_layers
+
+  # Want predictions
+  if(include_preds){
+    grad_fig <- grad_fig +
+      ggplot2::geom_point(ggplot2::aes(y = .data$pred, x = .data$dim), colour = "#FF00001A", shape = 16)
+  }
+
+  # With labels
+  if (labels) {
+    grad_fig +
+      ggplot2::geom_text(data = post_preds, mapping = ggplot2::aes(label = .data$label, x = cs_loc, y = 120), size = 2.5, colour = "black") +
+      ggplot2::facet_wrap(~subj, nrow = 3)
+  } else {
+    p <- grad_fig + ggplot2::facet_wrap(~subj, nrow = 3) # No labels
+  }
+
+
+  if(save_output & include_preds){
+    ggplot2::ggsave(file = paste0(path, group_output$group_name, "-postpreds"),
+                    device = "png",
+                    plot = p,
+                    units = "cm")
+  }
+  if(save_output)
+    ggplot2::ggsave(file = paste0(path, group_output$group_name, "-gradients"),
+                    device = "png",
+                    plot =   p,
+                    units = "cm")
+
+  p
+
+}
+
+#' Get posterior predictions for each group
+#'
+#' @param aug_model_output model output of `aug_run`
+#' @param group_nm name of the group
+#' @param nSamp ...
+#'
+#' @export
+Get_Posterior_Preds_by_group <- function(aug_model_output,
+                                         group_nm,
+                                         nSamp = 50){
+
+  # Extract group output nicely
+  group_output <- extract_group_output(aug_model_output, group_nm)
+
+  # Create postpreds
+  post_preds <- create_post_preds(group_output, nSamp)
+
+  # Create and add labels
+  label <- add_label(group_output)
+  post_preds$label <- rep(label, each = nSamp * group_output$nStim)
+
+  group_output$post_preds <- post_preds
+
+  group_output$group_name <- group_nm
+
+  group_output
+}
+
+
+
 #' Extract output for posterior predictions
 #'
 #' @param aug_model_output model output of `aug_run`
@@ -90,105 +201,4 @@ add_label <- function(group_output){
 
   label
 }
-
-#' Get posterior predictions for each group
-#'
-#' @param aug_model_output model output of `aug_run`
-#' @param group_nm name of the group
-#' @param nSamp ...
-#'
-#' @export
-Get_Posterior_Preds_by_group <- function(aug_model_output,
-                                group_nm,
-                                nSamp = 50){
-
-  # Extract group output nicely
-  group_output <- extract_group_output(aug_model_output, group_nm)
-
-  # Create postpreds
-  post_preds <- create_post_preds(group_output, nSamp)
-
-  # Create and add labels
-  label <- add_label(group_output)
-  post_preds$label <- rep(label, each = nSamp * group_output$nStim)
-
-  group_output$post_preds <- post_preds
-
-  group_output$group_name <- group_nm
-
-  group_output
-}
-
-#' Plot posterior predictions for a group
-#'
-#' @param group_output extracted group output from `extract_group_output`
-#'
-#' @param nSamp ...
-#' @param include_preds logical include predictions or not
-#' @param labels logical whether to display labels in plot
-#' @param save_output logical whether to save output
-#' @param path path to save output
-#'
-#' @export
-
-Plot_Posterior_Preds_by_group <- function(group_output,
-                                          nSamp = 50,
-                                          include_preds = FALSE,
-                                          labels = FALSE,
-                                          save_output = FALSE,
-                                          path = "output/"){
-
-  cs_loc <- (group_output$nStim-1)/2 # only if CS+ is in the middle of the dimension
-  nStim <- group_output$nStim
-  post_preds <- group_output$post_preds
-
-  grad_layers <- list(
-    ggplot2::geom_line(stat = "identity", linewidth = 1.25),
-    ggplot2::labs(title = "", x = "dimension", y = "responding"),
-    ggplot2::scale_colour_manual(values = c("black", "red")),
-    ggplot2::geom_vline(xintercept = cs_loc, linetype = "dotted", colour = "black"),
-    ggplot2::scale_x_continuous(limits = c(1, nStim), breaks = c(1, cs_loc, nStim),
-                                labels = c(min(-.5), 0, max(+.5))),
-    ggplot2::scale_y_continuous(limits = c(0, 140), breaks = c(0, 50, 100)),
-    ggplot2::theme_classic(),
-    ggplot2::theme(panel.background = ggplot2::element_rect(colour = "black", linewidth = 0.5, linetype = "solid", fill = NA),
-                   legend.position = "none")
-  )
-
-  # Only gradients (default)
-  grad_fig <-
-    ggplot2::ggplot(post_preds, ggplot2::aes(y = response, x = dim)) +
-    grad_layers
-
-  # Want predictions
-  if(include_preds){
-    grad_fig <- grad_fig +
-      ggplot2::geom_point(ggplot2::aes(y = pred, x = dim), colour = "#FF00001A", shape = 16)
-  }
-
-  # With labels
-  if (labels) {
-    grad_fig +
-      ggplot2::geom_text(data = post_preds, mapping = ggplot2::aes(label = label, x = cs_loc, y = 120), size = 2.5, colour = "black") +
-      ggplot2::facet_wrap(~subj, nrow = 3)
-  } else {
-    p <- grad_fig + ggplot2::facet_wrap(~subj, nrow = 3) # No labels
-  }
-
-
-  if(save_output & include_preds){
-    ggplot2::ggsave(file = paste0(path, group_output$group_name, "-postpreds"),
-                    device = "png",
-                    plot = p,
-                    units = "cm")
-  }
-  if(save_output)
-    ggplot2::ggsave(file = paste0(path, group_output$group_name, "-gradients"),
-                    device = "png",
-                    plot =   p,
-                    units = "cm")
-
-  p
-
-  }
 

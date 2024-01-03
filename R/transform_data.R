@@ -19,8 +19,8 @@ transform_data <- function(sim_data, dimVals = seq(-.5, +.5, .05), groupNames = 
 
   for (i in 1:length(groupNames)) {
     subset_data <- sim_data |>
-      dplyr::filter(group == groupNames[i]) |>
-      dplyr::arrange(subj, x)
+      dplyr::filter(.data$group == groupNames[i]) |>
+      dplyr::arrange(.data$subj, .data$x)
     out[[i]] <- list(subj = subset_data[["subj"]],
                      responses = matrix(subset_data[["y"]], ncol = length(dimVals),
                                         byrow = TRUE),

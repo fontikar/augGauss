@@ -1,7 +1,5 @@
 plot_simulated_data <- function(sim_data, dimVals = seq(-.5, +.5, .05)){
 
-  # shapes <- c(21)
-
   layers <- list(
       ggplot2::geom_line(size = 1.5),
       ggplot2::geom_point(fill = "white", size = 2),
@@ -14,12 +12,12 @@ plot_simulated_data <- function(sim_data, dimVals = seq(-.5, +.5, .05)){
   )
 
   gradients <- sim_data |>
-    dplyr::arrange(subj, group, x) |>
-    dplyr::group_by(group, x) |>
-    dplyr::summarise(y = mean(y))
+    dplyr::arrange(.data$subj, .data$group, .data$x) |>
+    dplyr::group_by(.data$group, .data$x) |>
+    dplyr::summarise(y = mean(.data$y))
 
-  fig <- ggplot2::ggplot(gradients, ggplot2::aes(x = x, y = y, group = group, colour = group,
-                                                 shape = group)) + layers
+  fig <- ggplot2::ggplot(gradients, ggplot2::aes(x = .data$x, y = .data$y, group = .data$group, colour = .data$group,
+                                                 shape = .data$group)) + layers
 
   return(fig)
 }

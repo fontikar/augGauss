@@ -81,9 +81,7 @@ Get_HDIs_diff(combined, comparison = c("group1", "group2"))
 # Posterior predictions
 
 ```{r}
-group_1 <- Get_Posterior_Preds_by_group(combined, "group1")
-
-Plot_Posterior_Preds_by_group(group_1, include_preds = TRUE)
+Plot_Posterior_Preds_by_group(combined, "group3", include_preds = TRUE)
 ```
 
 
