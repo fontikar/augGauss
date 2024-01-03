@@ -1,3 +1,9 @@
+#' Extract output for posterior predictions
+#'
+#' @param aug_model_output model output of `aug_run`
+#' @param group_nm ...
+#' @keywords interal
+
 extract_group_output <- function(aug_model_output, group_nm){
 
 
@@ -28,6 +34,12 @@ extract_group_output <- function(aug_model_output, group_nm){
        responses = responses)
 }
 
+#' Compile posterior predictions from model output
+#'
+#' @param group_output extracted group output from `extract_group_output`
+#' @param nSamp ...
+#' @keywords internal
+
 create_post_preds <- function(group_output, nSamp = 50){
 
   nStim <- group_output$nStim
@@ -57,6 +69,11 @@ create_post_preds <- function(group_output, nSamp = 50){
   post_preds
 }
 
+#' Add label for posterior prediction plots
+#'
+#' @param group_output  extracted group output from `extract_group_output`
+#' @keywords internal
+
 add_label <- function(group_output){
   nSubj <- group_output$nSubj
   summary <- group_output$summary
@@ -74,6 +91,13 @@ add_label <- function(group_output){
   label
 }
 
+#' Get posterior predictions for each group
+#'
+#' @param aug_model_output model output of `aug_run`
+#' @param group_nm name of the group
+#' @param nSamp ...
+#'
+#' @export
 Get_Posterior_Preds_by_group <- function(aug_model_output,
                                 group_nm,
                                 nSamp = 50){
@@ -95,6 +119,17 @@ Get_Posterior_Preds_by_group <- function(aug_model_output,
   group_output
 }
 
+#' Plot posterior predictions for a group
+#'
+#' @param group_output extracted group output from `extract_group_output`
+#'
+#' @param nSamp ...
+#' @param include_preds logical include predictions or not
+#' @param labels logical whether to display labels in plot
+#' @param save_output logical whether to save output
+#' @param path path to save output
+#'
+#' @export
 
 Plot_Posterior_Preds_by_group <- function(group_output,
                                           nSamp = 50,

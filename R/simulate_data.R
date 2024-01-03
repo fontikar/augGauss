@@ -34,10 +34,10 @@ simulate_data <- function(nSubj, nGroups,
   for (g in 1:nGroups) {
   # browser()
     # generate individual parameters
-    m <- rnorm(nSubj, M[g], .1)
-    h = rnorm(nSubj, H[g], 1)
-    wm = abs(rnorm(nSubj, WM[g], .1))
-    wp = abs(rnorm(nSubj, WP[g], .1))
+    m <- stats::rnorm(nSubj, M[g], .1)
+    h = stats::rnorm(nSubj, H[g], 1)
+    wm = abs(stats::rnorm(nSubj, WM[g], .1))
+    wp = abs(stats::rnorm(nSubj, WP[g], .1))
     noise = rep(Noise, nSubj)
 
     # generate individual gradients
@@ -45,9 +45,9 @@ simulate_data <- function(nSubj, nGroups,
 
     for (i in 1:nSubj) {
       gausLeft <- h[i] * exp(1)^-(((dimVals-m[i])^2) / (2 * wm[i]^2)) +
-        rnorm(length(dimVals), 0, noise)
+        stats::rnorm(length(dimVals), 0, noise)
       gausRight <- h[i] * exp(1)^-(((dimVals-m[i])^2) / (2 * wp[i]^2)) +
-        rnorm(length(dimVals), 0, noise)
+        stats::rnorm(length(dimVals), 0, noise)
       mIdx <- which.min(abs(dimVals-m[i]))
       if (mIdx == 1) {
         simData[i,] <- c(gausLeft[1], gausRight[(mIdx+1):length(dimVals)])

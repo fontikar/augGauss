@@ -7,3 +7,5 @@
 ^\.github$
 ^codecov\.yml$
 ^data-raw$
+^output/$
+

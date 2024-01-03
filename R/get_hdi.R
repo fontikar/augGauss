@@ -5,6 +5,7 @@
 # same order as HDIparams
 # - hdiLim sets the limit for the HDI
 # - propPost refers to the proportion of the posterior used to calculate p(direction) and p(ROPE)
+#' @export
 
 Get_HDIs <- function(aug_model_output,
                      ropeLow = c(-.05, .1, .1, 70),
@@ -70,6 +71,7 @@ Get_HDIs <- function(aug_model_output,
 # same order as HDIparams
 # - hdiLim sets the limit for the HDI
 # - propPost refers to the proportion of the posterior used to calculate p(direction) and p(ROPE)
+#' @export
 
 Get_HDIs_diff <- function(aug_model_output, comparison = c("group1", "group2"),
                           ropeLowDiffs = c(-.05, -.05, -.05, -2.5), ropeHighDiffs = abs(c(-.05, -.05, -.05, -2.5)),

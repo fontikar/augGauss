@@ -71,7 +71,7 @@ combined <- aug_fit_model(transformed_data = transformed_data, iter = 100, chain
 # Highest posterior densities
 
 ```{r}
-Get_HDIs(combined)
+augGauss::Get_HDIs(combined)
 
 Get_HDIs_diff(combined, comparison = c("group1", "group3"))
 Get_HDIs_diff(combined, comparison = c("group2", "group3"))
