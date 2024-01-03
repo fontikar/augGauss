@@ -1,3 +1,9 @@
+#' Plot simulated data nicely
+#'
+#' @param sim_data output from `simulate_data`
+#' @param dimVals dimension values, vector of length 5
+#'
+#' @export
 plot_simulated_data <- function(sim_data, dimVals = seq(-.5, +.5, .05)){
 
   layers <- list(

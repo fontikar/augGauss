@@ -16,3 +16,4 @@ Get_Posterior_Preds_by_group(aug_model_output, group_nm, nSamp = 50)
 \description{
 Get posterior predictions for each group
 }
+\keyword{internal}

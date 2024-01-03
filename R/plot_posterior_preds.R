@@ -85,7 +85,7 @@ Plot_Posterior_Preds_by_group <- function(aug_model_output,
 #' @param group_nm name of the group
 #' @param nSamp ...
 #'
-#' @export
+#' @keywords internal
 Get_Posterior_Preds_by_group <- function(aug_model_output,
                                          group_nm,
                                          nSamp = 50){

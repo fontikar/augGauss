@@ -2,9 +2,9 @@
 
 export(Get_HDIs)
 export(Get_HDIs_diff)
-export(Get_Posterior_Preds_by_group)
 export(Plot_Posterior_Preds_by_group)
 export(aug_fit_model)
+export(plot_simulated_data)
 export(simulate_data)
 export(transform_data)
 import(Rcpp)
