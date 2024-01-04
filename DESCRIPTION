@@ -26,7 +26,9 @@ Imports:
     rstan (>= 2.18.1),
     rstantools (>= 2.3.1.1),
     stats,
-    vdiffr
+    vdiffr, 
+    bayestestR, 
+    loo
 LinkingTo: 
     BH (>= 1.66.0),
     Rcpp (>= 0.12.0),

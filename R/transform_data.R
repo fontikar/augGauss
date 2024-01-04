@@ -1,3 +1,10 @@
+#' Transform tabular data in Stan-friendly list data
+#'
+#' @param sim_data output from `simulate_data`
+#'
+#' @param dimVals dimension values, vector length of 5
+#' @param groupNames optional vector of group names
+#'
 #' @export
 
 transform_data <- function(sim_data, dimVals = seq(-.5, +.5, .05), groupNames = NULL) {
