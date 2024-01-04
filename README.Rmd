@@ -24,26 +24,23 @@ knitr::opts_chunk$set(
 
 R package to fit augmented Gaussians to generalisation gradients using Stan
 
-The goal of 'rmot' is to ...
+The goal of 'augGauss' is to ...
 
 ## Installation
 
-'rmot' is under active development. You can install the current developmental version of 'rmot' from [GitHub](https://github.com/) with:
+'augGauss' is under active development. You can install the current developmental version of 'augGauss' from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("traitecoevo/rmot")
+remotes::install_github("fontikar/augGauss")
 ```
 
-## Quick demo
+We recommend checking out the vignette to get started: 
 
-```{r example}
-rmot_model("linear") |>
-  rmot_assign_data(X = Loblolly$age,
-                   Y = Loblolly$height,
-                   N = nrow(Loblolly)) |>
-  rmot_run()
+```{r}
+vignette("augGauss")
 ```
+
 
 ## Found a bug? 
 

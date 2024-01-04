@@ -15,7 +15,7 @@ Plot_Posterior_Preds_by_group(
 )
 }
 \arguments{
-\item{aug_model_output}{model output from \code{aug_run}}
+\item{aug_model_output}{model output from \code{aug_fit_model}}
 
 \item{group_name}{character string of one group}
 

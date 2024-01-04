@@ -1,10 +1,14 @@
-# This function calculates the Highest Density Intervals and
-# p(Region of Practical Equivalence) for HDIparams
-# Note:
-# - ROPE parameters must be of length(HDIparams) and specified in the
-# same order as HDIparams
-# - hdiLim sets the limit for the HDI
-# - propPost refers to the proportion of the posterior used to calculate p(direction) and p(ROPE)
+
+#' Calculate the Highest Density Intervals and p(Region of Practical Equivalence)
+#'
+#' @param aug_model_output  output from `aug_fit_model`
+#' @param ropeLow ...
+#' @param ropeHigh ...
+#' @param hdiLim ...
+#' @param propPost ...
+#' @param save_output logical whether to save output
+#' @param path path where output is saved
+#'
 #' @export
 
 Get_HDIs <- function(aug_model_output,
@@ -13,6 +17,14 @@ Get_HDIs <- function(aug_model_output,
                      hdiLim = .95,
                      propPost = 1,
                      save_output = FALSE, path = "output/") {
+
+  # This function calculates the Highest Density Intervals and
+  # p(Region of Practical Equivalence) for HDIparams
+  # Note:
+  # - ROPE parameters must be of length(HDIparams) and specified in the
+  # same order as HDIparams
+  # - hdiLim sets the limit for the HDI
+  # - propPost refers to the proportion of the posterior used to calculate p(direction) and p(ROPE)
 
   # Isolate samples
   samples <- aug_model_output$samples
@@ -63,20 +75,32 @@ Get_HDIs <- function(aug_model_output,
 
 }
 
-# This function calculates the Highest Density Intervals and
-# p(Region of Practical Equivalence) for HDIparams for differences between
-# samples_1 and samples_2
-# Note:
-# - ROPE parameters must be of length(HDIparams) and specified in the
-# same order as HDIparams
-# - hdiLim sets the limit for the HDI
-# - propPost refers to the proportion of the posterior used to calculate p(direction) and p(ROPE)
+#' Calculate the Highest Density Intervals and p(Region of Practical Equivalence) for HDIparams for differences between groups
+#'
+#' @param aug_model_output output from `aug_fit_model`
+#' @param comparison vector length of 2 of names of groups to compare
+#' @param ropeLowDiffs ...
+#' @param ropeHighDiffs ...
+#' @param hdiLim ...
+#' @param propPost ...
+#' @param save_output logical whether to save output
+#' @param path path where output is saved
+#'
 #' @export
 
 Get_HDIs_diff <- function(aug_model_output, comparison = c("group1", "group2"),
                           ropeLowDiffs = c(-.05, -.05, -.05, -2.5), ropeHighDiffs = abs(c(-.05, -.05, -.05, -2.5)),
                           hdiLim = 0.95, propPost = 1,
                           save_output = FALSE, path = "output/") {
+
+  # This function calculates the Highest Density Intervals and
+  # p(Region of Practical Equivalence) for HDIparams for differences between
+  # samples_1 and samples_2
+  # Note:
+  # - ROPE parameters must be of length(HDIparams) and specified in the
+  # same order as HDIparams
+  # - hdiLim sets the limit for the HDI
+  # - propPost refers to the proportion of the posterior used to calculate p(direction) and p(ROPE)
 
   # Isolate all samples
   samples <- aug_model_output$samples

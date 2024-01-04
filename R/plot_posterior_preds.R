@@ -1,6 +1,6 @@
 #' Plot posterior predictions for a group
 #'
-#' @param aug_model_output model output from `aug_run`
+#' @param aug_model_output model output from `aug_fit_model`
 #' @param group_name character string of one group
 #' @param nSamp ...
 #' @param include_preds logical include predictions or not
@@ -81,7 +81,7 @@ Plot_Posterior_Preds_by_group <- function(aug_model_output,
 
 #' Get posterior predictions for each group
 #'
-#' @param aug_model_output model output of `aug_run`
+#' @param aug_model_output model output of `aug_fit_model`
 #' @param group_nm name of the group
 #' @param nSamp ...
 #'
@@ -111,7 +111,7 @@ Get_Posterior_Preds_by_group <- function(aug_model_output,
 
 #' Extract output for posterior predictions
 #'
-#' @param aug_model_output model output of `aug_run`
+#' @param aug_model_output model output of `aug_fit_model`
 #' @param group_nm ...
 #' @keywords interal
 
