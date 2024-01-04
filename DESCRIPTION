@@ -44,3 +44,4 @@ Suggests:
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 LazyData: true
+URL: https://fontikar.github.io/augGauss/

@@ -9,3 +9,6 @@
 ^data-raw$
 ^output/$
 
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

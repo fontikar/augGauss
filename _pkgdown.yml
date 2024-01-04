@@ -1,0 +1,8 @@
+url: https://fontikar.github.io/augGauss/
+template:
+  bootstrap: 5
+  bootswatch: morph
+navbar:
+  bg: light
+  type: light
+
