@@ -4,7 +4,7 @@
 
 [![R-CMD-check](https://github.com/traitecoevo/rmot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/traitecoevo/rmot/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/traitecoevo/rmot/branch/master/graph/badge.svg)](https://app.codecov.io/gh/traitecoevo/rmot?branch=master)
+coverage](https://codecov.io/gh/fontikar/augGauss/branch/master/graph/badge.svg)](https://app.codecov.io/gh/traitecoevo/rmot?branch=master)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
@@ -14,26 +14,23 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 R package to fit augmented Gaussians to generalisation gradients using
 Stan
 
-The goal of ‘rmot’ is to …
+The goal of ‘augGauss’ is to …
 
 ## Installation
 
-‘rmot’ is under active development. You can install the current
-developmental version of ‘rmot’ from [GitHub](https://github.com/) with:
+‘augGauss’ is under active development. You can install the current
+developmental version of ‘augGauss’ from [GitHub](https://github.com/)
+with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("traitecoevo/rmot")
+remotes::install_github("fontikar/augGauss")
 ```
 
-## Quick demo
+We recommend checking out the vignette to get started:
 
 ``` r
-rmot_model("linear") |>
-  rmot_assign_data(X = Loblolly$age,
-                   Y = Loblolly$height,
-                   N = nrow(Loblolly)) |>
-  rmot_run()
+vignette("augGauss")
 ```
 
 ## Found a bug?
