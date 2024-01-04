@@ -113,12 +113,12 @@ of <code>augGauss</code>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 630 × 4</span></span></span>
 <span><span class="co">#&gt;    subj group      x     y</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 group1 -<span style="color: #BB0000;">0.5</span>  0    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1 group1 -<span style="color: #BB0000;">0.45</span> 0    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1 group1 -<span style="color: #BB0000;">0.4</span>  0    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1 group1 -<span style="color: #BB0000;">0.35</span> 0    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     1 group1 -<span style="color: #BB0000;">0.3</span>  0.666</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>     1 group1 -<span style="color: #BB0000;">0.25</span> 0.307</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1 group1 -<span style="color: #BB0000;">0.5</span>   20.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1 group1 -<span style="color: #BB0000;">0.45</span>  28.0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1 group1 -<span style="color: #BB0000;">0.4</span>   39.9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1 group1 -<span style="color: #BB0000;">0.35</span>  49.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     1 group1 -<span style="color: #BB0000;">0.3</span>   58.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>     1 group1 -<span style="color: #BB0000;">0.25</span>  62.6</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 624 more rows</span></span></span></code></pre></div>
 <p>You can save the simulated data by setting the <code>save_data</code>
 argument to <code>TRUE</code></p>
@@ -134,74 +134,7 @@ argument to <code>TRUE</code></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">transformed_data</span> <span class="op">&lt;-</span> <span class="va">sim_data</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/transform_data.html">transform_data</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">combined</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aug_fit_model.html">aug_fit_model</a></span><span class="op">(</span>transformed_data <span class="op">=</span> <span class="va">transformed_data</span>, iter <span class="op">=</span> <span class="fl">100</span>, chains <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: There were 41 divergent transitions after warmup. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span></span>
-<span><span class="co">#&gt; to find out why this is a problem and how to eliminate them.</span></span>
-<span><span class="co">#&gt; Warning: There were 57 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded</span></span>
-<span><span class="co">#&gt; Warning: Examine the pairs() plot to diagnose sampling problems</span></span>
-<span><span class="co">#&gt; Warning: The largest R-hat is 1.86, indicating chains have not mixed.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#r-hat</span></span>
-<span><span class="co">#&gt; Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#bulk-ess</span></span>
-<span><span class="co">#&gt; Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#tail-ess</span></span>
-<span><span class="co">#&gt; Warning: </span></span>
-<span><span class="co">#&gt; 21 (10.0%) p_waic estimates greater than 0.4. We recommend trying loo instead.</span></span>
-<span><span class="co">#&gt; Warning: Relative effective sample sizes ('r_eff' argument) not specified.</span></span>
-<span><span class="co">#&gt; For models fit with MCMC, the reported PSIS effective sample sizes and </span></span>
-<span><span class="co">#&gt; MCSE estimates will be over-optimistic.</span></span>
-<span><span class="co">#&gt; Warning: Some Pareto k diagnostic values are too high. See help('pareto-k-diagnostic') for details.</span></span>
-<span><span class="co">#&gt; Warning: There were 84 divergent transitions after warmup. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span></span>
-<span><span class="co">#&gt; to find out why this is a problem and how to eliminate them.</span></span>
-<span><span class="co">#&gt; Warning: There were 16 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded</span></span>
-<span><span class="co">#&gt; Warning: There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#bfmi-low</span></span>
-<span><span class="co">#&gt; Warning: Examine the pairs() plot to diagnose sampling problems</span></span>
-<span><span class="co">#&gt; Warning: The largest R-hat is 2.89, indicating chains have not mixed.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#r-hat</span></span>
-<span><span class="co">#&gt; Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#bulk-ess</span></span>
-<span><span class="co">#&gt; Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#tail-ess</span></span>
-<span><span class="co">#&gt; Warning: </span></span>
-<span><span class="co">#&gt; 8 (3.8%) p_waic estimates greater than 0.4. We recommend trying loo instead.</span></span>
-<span><span class="co">#&gt; Warning: Relative effective sample sizes ('r_eff' argument) not specified.</span></span>
-<span><span class="co">#&gt; For models fit with MCMC, the reported PSIS effective sample sizes and </span></span>
-<span><span class="co">#&gt; MCSE estimates will be over-optimistic.</span></span>
-<span><span class="co">#&gt; Warning: Some Pareto k diagnostic values are too high. See help('pareto-k-diagnostic') for details.</span></span>
-<span><span class="co">#&gt; Warning: There were 35 divergent transitions after warmup. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span></span>
-<span><span class="co">#&gt; to find out why this is a problem and how to eliminate them.</span></span>
-<span><span class="co">#&gt; Warning: There were 64 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded</span></span>
-<span><span class="co">#&gt; Warning: There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#bfmi-low</span></span>
-<span><span class="co">#&gt; Warning: Examine the pairs() plot to diagnose sampling problems</span></span>
-<span><span class="co">#&gt; Warning: The largest R-hat is 2.98, indicating chains have not mixed.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#r-hat</span></span>
-<span><span class="co">#&gt; Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#bulk-ess</span></span>
-<span><span class="co">#&gt; Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#tail-ess</span></span>
-<span><span class="co">#&gt; Warning: </span></span>
-<span><span class="co">#&gt; 137 (65.2%) p_waic estimates greater than 0.4. We recommend trying loo instead.</span></span>
-<span><span class="co">#&gt; Warning: Relative effective sample sizes ('r_eff' argument) not specified.</span></span>
-<span><span class="co">#&gt; For models fit with MCMC, the reported PSIS effective sample sizes and </span></span>
-<span><span class="co">#&gt; MCSE estimates will be over-optimistic.</span></span>
-<span><span class="co">#&gt; Warning: Some Pareto k diagnostic values are too high. See help('pareto-k-diagnostic') for details.</span></span></code></pre></div>
+<span><span class="va">combined</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aug_fit_model.html">aug_fit_model</a></span><span class="op">(</span>transformed_data <span class="op">=</span> <span class="va">transformed_data</span>, iter <span class="op">=</span> <span class="fl">100</span>, chains <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -210,163 +143,162 @@ argument to <code>TRUE</code></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/Get_HDIs.html">Get_HDIs</a></span><span class="op">(</span><span class="va">combined</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; $group1</span></span>
-<span><span class="co">#&gt;           param hdi_lim     hdi_low    hdi_high rope_low rope_high prop_rope</span></span>
-<span><span class="co">#&gt; 1       M_group    0.95 -0.07972567  0.02263214    -0.05      0.05      0.69</span></span>
-<span><span class="co">#&gt; 2  SDPlus_group    0.95  0.35647637  0.48862122     0.10      0.20      0.00</span></span>
-<span><span class="co">#&gt; 3 SDMinus_group    0.95  0.18379105  0.30837820     0.10      0.20      0.08</span></span>
-<span><span class="co">#&gt; 4  height_group    0.95 78.01489699 80.53459971    70.00     80.00      0.83</span></span>
+<span><span class="co">#&gt;           param hdi_lim    hdi_low    hdi_high rope_low rope_high prop_rope</span></span>
+<span><span class="co">#&gt; 1       M_group    0.95 -0.0908908  0.03586731    -0.05      0.05      0.78</span></span>
+<span><span class="co">#&gt; 2  SDPlus_group    0.95  0.3348266  0.48086057     0.10      0.20      0.00</span></span>
+<span><span class="co">#&gt; 3 SDMinus_group    0.95  0.1724787  0.30008516     0.10      0.20      0.15</span></span>
+<span><span class="co">#&gt; 4  height_group    0.95 77.5196138 80.15737202    70.00     80.00      0.96</span></span>
 <span><span class="co">#&gt;   p_dir</span></span>
-<span><span class="co">#&gt; 1  0.87</span></span>
+<span><span class="co">#&gt; 1  0.79</span></span>
 <span><span class="co">#&gt; 2  1.00</span></span>
 <span><span class="co">#&gt; 3  1.00</span></span>
 <span><span class="co">#&gt; 4  1.00</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group2</span></span>
 <span><span class="co">#&gt;           param hdi_lim     hdi_low    hdi_high rope_low rope_high prop_rope</span></span>
-<span><span class="co">#&gt; 1       M_group    0.95 -0.01803819  0.08725932    -0.05      0.05      0.65</span></span>
-<span><span class="co">#&gt; 2  SDPlus_group    0.95  0.32584384  0.47964028     0.10      0.20      0.00</span></span>
-<span><span class="co">#&gt; 3 SDMinus_group    0.95  0.16317274  0.27274444     0.10      0.20      0.34</span></span>
-<span><span class="co">#&gt; 4  height_group    0.95 72.87775313 76.44804082    70.00     80.00      1.00</span></span>
+<span><span class="co">#&gt; 1       M_group    0.95 -0.03557603  0.09613486    -0.05      0.05      0.74</span></span>
+<span><span class="co">#&gt; 2  SDPlus_group    0.95  0.29347237  0.42859499     0.10      0.20      0.00</span></span>
+<span><span class="co">#&gt; 3 SDMinus_group    0.95  0.18625033  0.29382908     0.10      0.20      0.05</span></span>
+<span><span class="co">#&gt; 4  height_group    0.95 60.15543552 77.51817058    70.00     80.00      0.50</span></span>
 <span><span class="co">#&gt;   p_dir</span></span>
-<span><span class="co">#&gt; 1  0.92</span></span>
+<span><span class="co">#&gt; 1  0.74</span></span>
 <span><span class="co">#&gt; 2  1.00</span></span>
 <span><span class="co">#&gt; 3  1.00</span></span>
 <span><span class="co">#&gt; 4  1.00</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group3</span></span>
-<span><span class="co">#&gt;           param hdi_lim     hdi_low    hdi_high rope_low rope_high prop_rope</span></span>
-<span><span class="co">#&gt; 1       M_group    0.95 -0.02489726  0.08943035    -0.05      0.05      0.63</span></span>
-<span><span class="co">#&gt; 2  SDPlus_group    0.95  0.21438490  0.38489904     0.10      0.20      0.01</span></span>
-<span><span class="co">#&gt; 3 SDMinus_group    0.95  0.13771309  0.25616297     0.10      0.20      0.55</span></span>
-<span><span class="co">#&gt; 4  height_group    0.95 48.43213075 71.11747827    70.00     80.00      0.17</span></span>
+<span><span class="co">#&gt;           param hdi_lim     hdi_low   hdi_high rope_low rope_high prop_rope</span></span>
+<span><span class="co">#&gt; 1       M_group    0.95  0.04971669  0.2305600    -0.05      0.05      0.03</span></span>
+<span><span class="co">#&gt; 2  SDPlus_group    0.95  0.31291494  0.9999632     0.10      0.20      0.00</span></span>
+<span><span class="co">#&gt; 3 SDMinus_group    0.95  0.20845666  0.3043613     0.10      0.20      0.00</span></span>
+<span><span class="co">#&gt; 4  height_group    0.95 40.43222326 71.2605300    70.00     80.00      0.38</span></span>
 <span><span class="co">#&gt;   p_dir</span></span>
-<span><span class="co">#&gt; 1   0.9</span></span>
-<span><span class="co">#&gt; 2   1.0</span></span>
-<span><span class="co">#&gt; 3   1.0</span></span>
-<span><span class="co">#&gt; 4   1.0</span></span>
+<span><span class="co">#&gt; 1     1</span></span>
+<span><span class="co">#&gt; 2     1</span></span>
+<span><span class="co">#&gt; 3     1</span></span>
+<span><span class="co">#&gt; 4     1</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/Get_HDIs_diff.html">Get_HDIs_diff</a></span><span class="op">(</span><span class="va">combined</span>, comparison <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"group1"</span>, <span class="st">"group3"</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; $group_sample_diffs</span></span>
 <span><span class="co">#&gt;         M_group SDPlus_group SDMinus_group height_group</span></span>
-<span><span class="co">#&gt; 1   -0.05901866  0.122295527   0.073445340    29.805420</span></span>
-<span><span class="co">#&gt; 2   -0.04915773  0.225503001  -0.030513387    29.066228</span></span>
-<span><span class="co">#&gt; 3   -0.13320636  0.168518073   0.057305701    29.561811</span></span>
-<span><span class="co">#&gt; 4   -0.03570876  0.128782251   0.039109735    26.959945</span></span>
-<span><span class="co">#&gt; 5   -0.04361061  0.188688876   0.087636833    25.871340</span></span>
-<span><span class="co">#&gt; 6   -0.06453702  0.103792596   0.069787709    29.303856</span></span>
-<span><span class="co">#&gt; 7   -0.06853530  0.122596448   0.037644043    26.684695</span></span>
-<span><span class="co">#&gt; 8   -0.05945458  0.152877915   0.017018861    25.555337</span></span>
-<span><span class="co">#&gt; 9   -0.10367678  0.243897055   0.001849441    26.743888</span></span>
-<span><span class="co">#&gt; 10  -0.16749744  0.125639390   0.026002958    30.660208</span></span>
-<span><span class="co">#&gt; 11  -0.07102394  0.165522893  -0.070048043    28.816812</span></span>
-<span><span class="co">#&gt; 12  -0.06560339  0.144099028  -0.072371913    24.976842</span></span>
-<span><span class="co">#&gt; 13  -0.06412555  0.109462501   0.030570305    27.631998</span></span>
-<span><span class="co">#&gt; 14  -0.13559286  0.166963309   0.112358876    27.801650</span></span>
-<span><span class="co">#&gt; 15  -0.02308173  0.124327337   0.080263037    29.402927</span></span>
-<span><span class="co">#&gt; 16  -0.06215152  0.166179551   0.130759530    28.896318</span></span>
-<span><span class="co">#&gt; 17  -0.08225343  0.070814097   0.034363733    29.669094</span></span>
-<span><span class="co">#&gt; 18  -0.10047864  0.114120180  -0.021978379    27.595793</span></span>
-<span><span class="co">#&gt; 19  -0.14381497  0.193959429   0.065934788    27.052674</span></span>
-<span><span class="co">#&gt; 20  -0.05801530  0.064373864   0.078949579    30.680740</span></span>
-<span><span class="co">#&gt; 21  -0.03337687  0.121632648   0.046109494    27.713020</span></span>
-<span><span class="co">#&gt; 22  -0.02237132  0.116509021   0.016881832    27.169486</span></span>
-<span><span class="co">#&gt; 23  -0.01069699  0.044687887   0.083846579    27.219485</span></span>
-<span><span class="co">#&gt; 24  -0.08273321  0.138454847   0.033579977    28.890252</span></span>
-<span><span class="co">#&gt; 25  -0.05299794  0.055387268   0.100376385    29.452803</span></span>
-<span><span class="co">#&gt; 26  -0.02104444  0.169867605   0.065410294    29.890555</span></span>
-<span><span class="co">#&gt; 27  -0.01202156  0.153600405   0.012955170    26.883457</span></span>
-<span><span class="co">#&gt; 28  -0.14381621  0.154276584   0.071954954    28.141785</span></span>
-<span><span class="co">#&gt; 29  -0.13715070  0.168221780   0.093567721    26.291194</span></span>
-<span><span class="co">#&gt; 30  -0.05588099  0.073362670   0.033834100    29.820666</span></span>
-<span><span class="co">#&gt; 31  -0.12142402  0.066179648   0.049777831    30.678771</span></span>
-<span><span class="co">#&gt; 32  -0.03298621  0.019918122   0.046912548    27.488173</span></span>
-<span><span class="co">#&gt; 33  -0.07753213  0.088024317   0.102824957    29.750020</span></span>
-<span><span class="co">#&gt; 34  -0.01034750  0.149588804   0.093973462    28.994907</span></span>
-<span><span class="co">#&gt; 35  -0.13169457  0.227269461  -0.022363296    29.634288</span></span>
-<span><span class="co">#&gt; 36  -0.05077972  0.063514224   0.072441168    28.016010</span></span>
-<span><span class="co">#&gt; 37  -0.01711634  0.158215959   0.110729265    28.488554</span></span>
-<span><span class="co">#&gt; 38  -0.04084090  0.087794616   0.068139388    31.924549</span></span>
-<span><span class="co">#&gt; 39  -0.12219830  0.100144504   0.007708378    30.581999</span></span>
-<span><span class="co">#&gt; 40  -0.03734472  0.183467914   0.006049445    25.600852</span></span>
-<span><span class="co">#&gt; 41  -0.12296117  0.087922223   0.129776564    29.132906</span></span>
-<span><span class="co">#&gt; 42  -0.10879230  0.248764928   0.068292938    27.134017</span></span>
-<span><span class="co">#&gt; 43  -0.06774144  0.124297600  -0.020539875    29.146094</span></span>
-<span><span class="co">#&gt; 44  -0.07968252  0.124912752  -0.014282366    29.018478</span></span>
-<span><span class="co">#&gt; 45  -0.16436775  0.111991939   0.070359917    31.186980</span></span>
-<span><span class="co">#&gt; 46  -0.11361134  0.130540631  -0.008508974    26.324742</span></span>
-<span><span class="co">#&gt; 47  -0.08566495  0.142311863   0.123826369    29.425527</span></span>
-<span><span class="co">#&gt; 48  -0.07692512  0.110377847   0.108011366    28.841260</span></span>
-<span><span class="co">#&gt; 49  -0.09463015  0.242701349   0.003711353    29.075604</span></span>
-<span><span class="co">#&gt; 50  -0.04700810  0.042178458   0.133851256    31.334642</span></span>
-<span><span class="co">#&gt; 51  -0.15262331  0.111260030   0.082907924     8.419636</span></span>
-<span><span class="co">#&gt; 52  -0.11041253  0.132432967   0.090963161     9.017005</span></span>
-<span><span class="co">#&gt; 53  -0.08625804  0.118408919   0.063478321    11.776279</span></span>
-<span><span class="co">#&gt; 54  -0.05258450 -0.003980769   0.035546366    11.450367</span></span>
-<span><span class="co">#&gt; 55  -0.01934918  0.119565387  -0.060472160     8.126301</span></span>
-<span><span class="co">#&gt; 56  -0.09779133  0.114022081  -0.007246397     8.556576</span></span>
-<span><span class="co">#&gt; 57  -0.06952985  0.126005719   0.091419259     9.623541</span></span>
-<span><span class="co">#&gt; 58  -0.05154476  0.012875867   0.085829680    11.305421</span></span>
-<span><span class="co">#&gt; 59  -0.13907353  0.064998923   0.082380229    10.825834</span></span>
-<span><span class="co">#&gt; 60  -0.06344315  0.119626812  -0.026795909    10.687574</span></span>
-<span><span class="co">#&gt; 61  -0.08267377  0.090137777   0.136416823    10.067855</span></span>
-<span><span class="co">#&gt; 62  -0.11253087  0.222429147   0.125747281    11.379271</span></span>
-<span><span class="co">#&gt; 63  -0.06074152  0.007925219   0.089984004     8.683102</span></span>
-<span><span class="co">#&gt; 64  -0.06956585  0.064510124  -0.021168179     7.794068</span></span>
-<span><span class="co">#&gt; 65  -0.10312571  0.031301840   0.050249623    10.937641</span></span>
-<span><span class="co">#&gt; 66  -0.05851258 -0.014767571  -0.033242187     8.294245</span></span>
-<span><span class="co">#&gt; 67  -0.04740977  0.095174498  -0.009698077     9.562321</span></span>
-<span><span class="co">#&gt; 68  -0.08903626  0.070725447   0.021893345    10.966433</span></span>
-<span><span class="co">#&gt; 69  -0.07827749  0.048806849   0.116522504     7.813999</span></span>
-<span><span class="co">#&gt; 70  -0.03094882 -0.049968296  -0.030796561    10.715459</span></span>
-<span><span class="co">#&gt; 71  -0.02784083  0.012047206   0.054811644     7.554432</span></span>
-<span><span class="co">#&gt; 72  -0.02994565  0.116157790   0.062827779     9.365519</span></span>
-<span><span class="co">#&gt; 73  -0.12392382  0.079094620   0.023772493     9.502851</span></span>
-<span><span class="co">#&gt; 74  -0.08404709  0.150449571   0.033262213    11.511375</span></span>
-<span><span class="co">#&gt; 75  -0.07470195  0.073095795   0.063508462    14.660431</span></span>
-<span><span class="co">#&gt; 76  -0.14579423  0.119672089   0.054474586     8.587665</span></span>
-<span><span class="co">#&gt; 77  -0.06355475  0.095937862   0.062823392    13.913661</span></span>
-<span><span class="co">#&gt; 78  -0.04112743  0.064927770  -0.079235513     9.756664</span></span>
-<span><span class="co">#&gt; 79  -0.03493215  0.087246850  -0.069209278    10.073455</span></span>
-<span><span class="co">#&gt; 80  -0.07966652  0.131016644   0.060981607    16.931947</span></span>
-<span><span class="co">#&gt; 81  -0.06819165  0.171625120   0.088067906    10.102510</span></span>
-<span><span class="co">#&gt; 82  -0.08603574  0.084503878   0.042495088    10.715402</span></span>
-<span><span class="co">#&gt; 83  -0.07629210  0.102019912   0.056643143    10.454184</span></span>
-<span><span class="co">#&gt; 84  -0.06579455  0.139715751  -0.010655373     9.480722</span></span>
-<span><span class="co">#&gt; 85  -0.06496711  0.022277586   0.096590874     8.505207</span></span>
-<span><span class="co">#&gt; 86  -0.06375809  0.068033240   0.038425345     9.173471</span></span>
-<span><span class="co">#&gt; 87  -0.09581431  0.076300636   0.109379763     8.885449</span></span>
-<span><span class="co">#&gt; 88  -0.05933855  0.156939019   0.087885531     9.725392</span></span>
-<span><span class="co">#&gt; 89  -0.08410514  0.103450445   0.002178780    11.428068</span></span>
-<span><span class="co">#&gt; 90  -0.05391466  0.132022787   0.091033988    11.244271</span></span>
-<span><span class="co">#&gt; 91  -0.04554624  0.057579658   0.093345992    12.949587</span></span>
-<span><span class="co">#&gt; 92  -0.08597298  0.008669315   0.038318303    10.535722</span></span>
-<span><span class="co">#&gt; 93  -0.04184243  0.158937303   0.040481842    11.020289</span></span>
-<span><span class="co">#&gt; 94  -0.09096260  0.085124458   0.034948747     8.735534</span></span>
-<span><span class="co">#&gt; 95  -0.01619995  0.076716706   0.065190668     9.359031</span></span>
-<span><span class="co">#&gt; 96  -0.06369105  0.125245721   0.037294687     9.718881</span></span>
-<span><span class="co">#&gt; 97  -0.11828764  0.074488421   0.093914385    11.662310</span></span>
-<span><span class="co">#&gt; 98  -0.03226671  0.103528704   0.005693238     8.872145</span></span>
-<span><span class="co">#&gt; 99  -0.14096154  0.096292962   0.060792991     8.179504</span></span>
-<span><span class="co">#&gt; 100 -0.08078163  0.177927662   0.161734441    10.730456</span></span>
+<span><span class="co">#&gt; 1   -0.21727101  0.054325519  -0.002874940    10.263999</span></span>
+<span><span class="co">#&gt; 2   -0.21620839  0.027194856  -0.046093563     8.764259</span></span>
+<span><span class="co">#&gt; 3   -0.10488857  0.032018199  -0.077473921     9.810212</span></span>
+<span><span class="co">#&gt; 4   -0.12845479  0.092912814  -0.021460778     8.649261</span></span>
+<span><span class="co">#&gt; 5   -0.09777394  0.074549662  -0.053819750     6.777483</span></span>
+<span><span class="co">#&gt; 6   -0.19403608  0.024728223  -0.042852513     8.224108</span></span>
+<span><span class="co">#&gt; 7   -0.08016422  0.085057504   0.012657117     8.617163</span></span>
+<span><span class="co">#&gt; 8   -0.19176985  0.048489959  -0.021524948     9.097928</span></span>
+<span><span class="co">#&gt; 9   -0.10062733  0.049444555   0.047222618     8.478196</span></span>
+<span><span class="co">#&gt; 10  -0.08891719  0.167945635   0.051308251     9.370869</span></span>
+<span><span class="co">#&gt; 11  -0.16284360  0.081915298  -0.024586142     7.911898</span></span>
+<span><span class="co">#&gt; 12  -0.15092997  0.101082417   0.003867328     8.089712</span></span>
+<span><span class="co">#&gt; 13  -0.12249264  0.001112768  -0.005464958     6.844235</span></span>
+<span><span class="co">#&gt; 14  -0.16838249  0.025054657   0.029113208     7.568462</span></span>
+<span><span class="co">#&gt; 15  -0.08475131  0.046278480  -0.068447797     9.129154</span></span>
+<span><span class="co">#&gt; 16  -0.17539865  0.040393975   0.012054918     8.656194</span></span>
+<span><span class="co">#&gt; 17  -0.07754371  0.016172625  -0.014007394     7.391960</span></span>
+<span><span class="co">#&gt; 18  -0.13515942 -0.068083050   0.024295119     7.216624</span></span>
+<span><span class="co">#&gt; 19  -0.10985060  0.139345173   0.025466695     7.788508</span></span>
+<span><span class="co">#&gt; 20  -0.12608943  0.085633969  -0.032535457     6.833905</span></span>
+<span><span class="co">#&gt; 21  -0.20520168  0.024802518   0.031534362     9.278038</span></span>
+<span><span class="co">#&gt; 22  -0.06612078  0.087075698   0.003975574     7.797557</span></span>
+<span><span class="co">#&gt; 23  -0.16195674  0.133397910  -0.034101508     8.780768</span></span>
+<span><span class="co">#&gt; 24  -0.09975199  0.153763062   0.046239549     8.751914</span></span>
+<span><span class="co">#&gt; 25  -0.14519275  0.034906697  -0.059363042    10.387826</span></span>
+<span><span class="co">#&gt; 26  -0.10886900  0.120951636   0.023862213     8.162546</span></span>
+<span><span class="co">#&gt; 27  -0.13568646  0.087323383  -0.050970975     8.984652</span></span>
+<span><span class="co">#&gt; 28  -0.03158035  0.146661976   0.013511988     8.339056</span></span>
+<span><span class="co">#&gt; 29  -0.13975900  0.128345473   0.047298099     8.403335</span></span>
+<span><span class="co">#&gt; 30  -0.14045212  0.024040483  -0.051702132     8.493557</span></span>
+<span><span class="co">#&gt; 31  -0.16617044  0.035638997  -0.034269514     7.363753</span></span>
+<span><span class="co">#&gt; 32  -0.08278816  0.059563255  -0.002855155    10.831375</span></span>
+<span><span class="co">#&gt; 33  -0.11110287  0.087656601  -0.090216697     7.362208</span></span>
+<span><span class="co">#&gt; 34  -0.09758685  0.131009973  -0.015780754     7.473893</span></span>
+<span><span class="co">#&gt; 35  -0.08963024  0.085048408   0.004222881     7.764303</span></span>
+<span><span class="co">#&gt; 36  -0.12599236  0.065000800  -0.020296263     8.126818</span></span>
+<span><span class="co">#&gt; 37  -0.14113086  0.101979583  -0.002538226     7.423678</span></span>
+<span><span class="co">#&gt; 38  -0.14678511 -0.031585127   0.008981466     6.829856</span></span>
+<span><span class="co">#&gt; 39  -0.07252593 -0.010047081  -0.078706226     9.353344</span></span>
+<span><span class="co">#&gt; 40  -0.10687508  0.049836821  -0.043592705     7.890647</span></span>
+<span><span class="co">#&gt; 41  -0.10427783  0.116668902   0.034981188     7.806011</span></span>
+<span><span class="co">#&gt; 42  -0.18060148  0.036201549  -0.043302571     6.429565</span></span>
+<span><span class="co">#&gt; 43  -0.16635302 -0.010713863   0.019527835     7.368822</span></span>
+<span><span class="co">#&gt; 44  -0.18138076 -0.010378215  -0.026836213     7.181583</span></span>
+<span><span class="co">#&gt; 45  -0.15020614 -0.054234977   0.019991958     8.634247</span></span>
+<span><span class="co">#&gt; 46  -0.11281399 -0.018856074  -0.072978272     7.552645</span></span>
+<span><span class="co">#&gt; 47  -0.13784375  0.073677016  -0.083341264     6.785780</span></span>
+<span><span class="co">#&gt; 48  -0.17945973  0.043832770  -0.031817741     9.923425</span></span>
+<span><span class="co">#&gt; 49  -0.05485419  0.046901489  -0.034783334     8.326676</span></span>
+<span><span class="co">#&gt; 50  -0.09492663  0.070380449   0.034529817     7.741720</span></span>
+<span><span class="co">#&gt; 51  -0.20925240 -0.564778317  -0.008239395    38.363062</span></span>
+<span><span class="co">#&gt; 52  -0.18461162 -0.641153943  -0.060941655    37.141019</span></span>
+<span><span class="co">#&gt; 53  -0.24641679 -0.551128976   0.021356812    34.079672</span></span>
+<span><span class="co">#&gt; 54  -0.18620537 -0.605165895  -0.033471537    36.567449</span></span>
+<span><span class="co">#&gt; 55  -0.21202043 -0.624498051  -0.029104507    32.375438</span></span>
+<span><span class="co">#&gt; 56  -0.16525425 -0.626975267  -0.041467999    35.748695</span></span>
+<span><span class="co">#&gt; 57  -0.20156777 -0.613388964  -0.056823929    36.105844</span></span>
+<span><span class="co">#&gt; 58  -0.27332690 -0.629519373   0.038553850    36.263644</span></span>
+<span><span class="co">#&gt; 59  -0.18647291 -0.597542156  -0.001849103    35.504300</span></span>
+<span><span class="co">#&gt; 60  -0.17297254 -0.647661936  -0.057937110    38.156776</span></span>
+<span><span class="co">#&gt; 61  -0.23745482 -0.567111410   0.061553383    36.219411</span></span>
+<span><span class="co">#&gt; 62  -0.15129208 -0.589719070   0.002308566    34.011380</span></span>
+<span><span class="co">#&gt; 63  -0.30117632 -0.590493748  -0.075086573    36.091012</span></span>
+<span><span class="co">#&gt; 64  -0.15598693 -0.613454585  -0.057124823    38.384191</span></span>
+<span><span class="co">#&gt; 65  -0.20123022 -0.576605426  -0.124350576    36.599653</span></span>
+<span><span class="co">#&gt; 66  -0.23217476 -0.544869754   0.042343846    38.711410</span></span>
+<span><span class="co">#&gt; 67  -0.14963297 -0.584767364  -0.023911597    36.544399</span></span>
+<span><span class="co">#&gt; 68  -0.22147420 -0.565663182  -0.052745935    34.722783</span></span>
+<span><span class="co">#&gt; 69  -0.15519072 -0.619161208   0.007919497    36.960282</span></span>
+<span><span class="co">#&gt; 70  -0.29266266 -0.585502205  -0.118444511    37.063214</span></span>
+<span><span class="co">#&gt; 71  -0.11926239 -0.626126605   0.042286688    36.504798</span></span>
+<span><span class="co">#&gt; 72  -0.24185617 -0.587064834   0.020241645    34.200256</span></span>
+<span><span class="co">#&gt; 73  -0.13599668 -0.583412539   0.011030613    35.074059</span></span>
+<span><span class="co">#&gt; 74  -0.22410834 -0.519231408  -0.046111295    36.939685</span></span>
+<span><span class="co">#&gt; 75  -0.15963307 -0.665093007  -0.125040071    34.740452</span></span>
+<span><span class="co">#&gt; 76  -0.26095933 -0.634081264  -0.042051551    37.553125</span></span>
+<span><span class="co">#&gt; 77  -0.21466958 -0.657220511  -0.139347670    34.849520</span></span>
+<span><span class="co">#&gt; 78  -0.18842444 -0.586654912  -0.044857741    35.932985</span></span>
+<span><span class="co">#&gt; 79  -0.20701723 -0.581642051   0.022328549    34.756345</span></span>
+<span><span class="co">#&gt; 80  -0.18909002 -0.603678657  -0.017677222    37.665586</span></span>
+<span><span class="co">#&gt; 81  -0.25559885 -0.559000448  -0.011528151    33.625754</span></span>
+<span><span class="co">#&gt; 82  -0.17619171 -0.481916238  -0.053239331    35.661848</span></span>
+<span><span class="co">#&gt; 83  -0.23833855 -0.576105440  -0.056858272    35.481071</span></span>
+<span><span class="co">#&gt; 84  -0.21483809 -0.669176585  -0.086838043    38.385404</span></span>
+<span><span class="co">#&gt; 85  -0.11633650 -0.527193485  -0.010405706    38.244455</span></span>
+<span><span class="co">#&gt; 86  -0.27861233 -0.498995189  -0.074730294    37.362586</span></span>
+<span><span class="co">#&gt; 87  -0.13909825 -0.636699472  -0.019286083    35.692603</span></span>
+<span><span class="co">#&gt; 88  -0.22660366 -0.529350749   0.009483053    34.774190</span></span>
+<span><span class="co">#&gt; 89  -0.15081918 -0.607069218  -0.046954938    36.256107</span></span>
+<span><span class="co">#&gt; 90  -0.13925960 -0.630892878  -0.094224635    35.081719</span></span>
+<span><span class="co">#&gt; 91  -0.23733121 -0.594716780   0.023088106    35.232090</span></span>
+<span><span class="co">#&gt; 92  -0.17320224 -0.588400132   0.000592308    37.481292</span></span>
+<span><span class="co">#&gt; 93  -0.13279767 -0.627022701  -0.009364474    34.141147</span></span>
+<span><span class="co">#&gt; 94  -0.23409750 -0.560692822  -0.042604604    36.395646</span></span>
+<span><span class="co">#&gt; 95  -0.26013161 -0.584752048   0.006276239    36.947906</span></span>
+<span><span class="co">#&gt; 96  -0.13024212 -0.556868442  -0.013275010    34.259025</span></span>
+<span><span class="co">#&gt; 97  -0.21847179 -0.564503224  -0.052857016    34.600155</span></span>
+<span><span class="co">#&gt; 98  -0.16299429 -0.603026075   0.004824676    35.653599</span></span>
+<span><span class="co">#&gt; 99  -0.18710811 -0.650855414  -0.013309758    34.604976</span></span>
+<span><span class="co">#&gt; 100 -0.24290342 -0.570713747  -0.058363528    37.685861</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $group_diff_hdi</span></span>
-<span><span class="co">#&gt;           param hdi_lim      hdi_low   hdi_high p_dir rope_low rope_high</span></span>
-<span><span class="co">#&gt; 1       M_group    0.95 -0.143816213 -0.0103475  1.00    -0.05      0.05</span></span>
-<span><span class="co">#&gt; 2  SDPlus_group    0.95  0.007925219  0.2438971  0.97    -0.05      0.05</span></span>
-<span><span class="co">#&gt; 3 SDMinus_group    0.95 -0.072371913  0.1307595  0.82    -0.05      0.05</span></span>
-<span><span class="co">#&gt; 4  height_group    0.95  7.794068238 30.6807396  1.00    -2.50      2.50</span></span>
+<span><span class="co">#&gt;           param hdi_lim     hdi_low    hdi_high p_dir rope_low rope_high</span></span>
+<span><span class="co">#&gt; 1       M_group    0.95 -0.27861233 -0.06612078  1.00    -0.05      0.05</span></span>
+<span><span class="co">#&gt; 2  SDPlus_group    0.95 -0.66917659  0.13339791  0.57    -0.05      0.05</span></span>
+<span><span class="co">#&gt; 3 SDMinus_group    0.95 -0.09422464  0.06155338  0.65    -0.05      0.05</span></span>
+<span><span class="co">#&gt; 4  height_group    0.95  6.82985615 38.38540378  1.00    -2.50      2.50</span></span>
 <span><span class="co">#&gt;   prop_rope</span></span>
-<span><span class="co">#&gt; 1      0.26</span></span>
-<span><span class="co">#&gt; 2      0.13</span></span>
-<span><span class="co">#&gt; 3      0.42</span></span>
+<span><span class="co">#&gt; 1      0.01</span></span>
+<span><span class="co">#&gt; 2      0.23</span></span>
+<span><span class="co">#&gt; 3      0.71</span></span>
 <span><span class="co">#&gt; 4      0.00</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="posterior-predictions">Posterior predictions<a class="anchor" aria-label="anchor" href="#posterior-predictions"></a>
 </h2>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/Plot_Posterior_Preds_by_group.html">Plot_Posterior_Preds_by_group</a></span><span class="op">(</span><span class="va">combined</span>, <span class="st">"group3"</span>, include_preds <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 2404 rows containing missing values (`geom_point()`).</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/Plot_Posterior_Preds_by_group.html">Plot_Posterior_Preds_by_group</a></span><span class="op">(</span><span class="va">combined</span>, <span class="st">"group3"</span>, include_preds <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="augGauss_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
