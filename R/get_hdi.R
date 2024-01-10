@@ -44,7 +44,7 @@ Get_HDIs <- function(aug_model_output,
     temp <- temp |>
       dplyr::mutate(rope_low = ropeLow,
                     rope_high = ropeHigh) |>
-      dplyr::select(param:hdi_high, rope_low, rope_high, prop_rope)
+      dplyr::select("param", "hdi_lim", "hdi_low", "hdi_high", "rope_low", "rope_high", "prop_rope")
 
     for (i in 1:length(HDIparams)) {
       temp$hdi_low[i] <- bayestestR::hdi(as.vector(samples[[HDIparams[i]]]), ci = hdiLim)$CI_low
