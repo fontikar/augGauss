@@ -2,7 +2,7 @@
 % Please edit documentation in R/aug_fit_model.R
 \name{aug_fit_model}
 \alias{aug_fit_model}
-\title{Fit an Augmented Gaussian Bayesian Model}
+\title{Fit an Augmented Gaussian Function in Stan}
 \usage{
 aug_fit_model(transformed_data, ...)
 }
@@ -12,7 +12,15 @@ aug_fit_model(transformed_data, ...)
 \item{...}{arguments passed to rstan::sampling()}
 }
 \value{
-large list object containing ...
+large list object containing:
+\itemize{
+\item \code{stanfit}: Object of class stanfit containing output from the Stan model as returned by \code{sampling}
+\item \code{diag}:
+\item \code{samples}
+\item \code{summary}
+\item \code{waic}
+\item \code{loo}
+}
 }
 \description{
 A short description...
@@ -20,9 +28,9 @@ A short description...
 \details{
 The data must in a list object
 \itemize{
-\item \code{nSubj}
-\item \code{nStim}
-\item \code{xs}
+\item \code{nSubj}: Number of subjects
+\item \code{nStim}: Number of stimuli along the dimension
+\item \code{xs}: Indices of stimuli on the x axis (0 represents the CS+)
 }
 }
 \examples{

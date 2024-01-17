@@ -13,6 +13,9 @@ transform_data(sim_data, dimVals = seq(-0.5, +0.5, 0.05), groupNames = NULL)
 
 \item{groupNames}{optional vector of group names}
 }
+\value{
+list object of length(nGroups) containing datalists for Stan
+}
 \description{
 Transform tabular data in Stan-friendly list data
 }

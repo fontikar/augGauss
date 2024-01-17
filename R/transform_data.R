@@ -4,6 +4,7 @@
 #'
 #' @param dimVals dimension values, vector length of 5
 #' @param groupNames optional vector of group names
+#' @return list object of length(nGroups) containing datalists for Stan
 #'
 #' @export
 

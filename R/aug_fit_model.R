@@ -1,4 +1,4 @@
-#' @title Fit an Augmented Gaussian Bayesian Model
+#' @title Fit an Augmented Gaussian Function in Stan
 #'
 #' @description
 #' A short description...
@@ -8,10 +8,16 @@
 #' @param ... arguments passed to rstan::sampling()
 #' @details
 #' The data must in a list object
-#' - `nSubj`
-#' - `nStim`
-#' - `xs`
-#' @return large list object containing ...
+#' - `nSubj`: Number of subjects
+#' - `nStim`: Number of stimuli along the dimension
+#' - `xs`: Indices of stimuli on the x axis (0 represents the CS+)
+#' @return large list object containing:
+#' - `stanfit`: Object of class stanfit containing output from the Stan model as returned by `sampling`
+#' - `diag`:
+#' - `samples`
+#' - `summary`
+#' - `waic`
+#' - `loo`
 #' @author Jessica Lee
 #' @examples
 #' \dontrun{
