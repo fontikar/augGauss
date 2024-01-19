@@ -16,3 +16,10 @@ test_that("Check output", {
   expect_equal(length(transform_data(demo_data)), 3)
   expect_type(transform_data(demo_data), "list")
 })
+
+test_that("Errors are triggered", {
+  expect_error(demo_data |> transform_data(groupNames = letters[1:2]))
+  expect_error(demo_data |> transform_data(dimVals = c(0,1,2,3,4,5)))
+  expect_error(demo_data |> transform_data(dimVals = c(1,2,3,4,5,0)))
+
+})

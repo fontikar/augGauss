@@ -18,9 +18,24 @@ transform_data <- function(sim_data, dimVals = seq(-.5, +.5, .05), groupNames = 
   # - Choose appropriate breaks and labels for the x-axis
   # See demo_data.csv for an example
 
-  # Determine groupNames
-  if(is.null(groupNames))
+  # When groupNames is supplied, check if # of groupNames matches levels in data
+  if(! is.null(groupNames)) {
+  if(! length(groupNames) == unique(sim_data$group) |> length())
+    stop("Length of `groupNames` supplied does not match number of groups in data")
+  }
+
+  # Check if 0 is at min or max of dimVals
+  if(dimVals[1] == 0 | dimVals[length(dimVals)] == 0){
+    stop('`dimVals` cannot start or end with 0, please rescale your data. See vignette("rescaling data")')
+  }
+
+  # If no groupNames are supplied, identify time from data
+  if(is.null(groupNames)){
     groupNames <- unique(sim_data$group)
+    message("`groupNames` not supplied, taking unique values from `group` variable")
+  }
+
+
 
   out <- vector("list", length(groupNames))
 
