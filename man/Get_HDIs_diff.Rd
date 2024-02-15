@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_hdi.R
 \name{Get_HDIs_diff}
 \alias{Get_HDIs_diff}
-\title{Calculate the Highest Density Intervals and p(Region of Practical Equivalence) for HDIparams for differences between groups}
+\title{Calculate Highest Density Intervals for differences between two groups}
 \usage{
 Get_HDIs_diff(
   aug_model_output,
@@ -18,20 +18,21 @@ Get_HDIs_diff(
 \arguments{
 \item{aug_model_output}{output from \code{aug_fit_model}}
 
-\item{comparison}{vector length of 2 of names of groups to compare}
+\item{comparison}{vector of length 2 of names of groups to compare. These group names must match the names in the data.}
 
 \item{ropeLowDiffs}{...}
 
 \item{ropeHighDiffs}{...}
 
-\item{hdiLim}{...}
+\item{propPost}{a number specifying the proportion of the posterior samples used to calculate p(direction) and p(ROPE), defaults to 1.}
 
-\item{propPost}{...}
+\item{save_output}{a logical indicating whether to save output, defaults to FALSE.}
 
-\item{save_output}{logical whether to save output}
+\item{path}{optional path to save output.}
 
-\item{path}{path where output is saved}
+\item{a}{number specifying the probability mass used to compute the Highest Density Interval (HDI), defaults to .95.}
 }
 \description{
-Calculate the Highest Density Intervals and p(Region of Practical Equivalence) for HDIparams for differences between groups
+#' @description
+This function calculates Highest Density Intervals (HDIs) for differences in parameters between two groups.
 }

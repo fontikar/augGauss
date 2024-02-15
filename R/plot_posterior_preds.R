@@ -1,12 +1,12 @@
-#' Plot posterior predictions for a group
+#' Plot posterior predictions for a single group
 #'
-#' @param aug_model_output model output from `aug_fit_model`
-#' @param group_name character string of one group
-#' @param nSamp ...
-#' @param include_preds logical include predictions or not
-#' @param labels logical whether to display labels in plot
-#' @param save_output logical whether to save output
-#' @param path path to save output
+#' @param aug_model_output model output from `aug_fit_model`.
+#' @param group_name a character string specifying the name of the group.
+#' @param nSamp an integer specifying the number of posterior samples to plot.
+#' @param include_preds a logical indicating whether to include the predictions in the plot.
+#' @param labels a logical indicating whether to display labels in the plot.
+#' @param save_output a logical indicating whether to save output, defaults to FALSE.
+#' @param path optional path to save output.
 #'
 #' @export
 
@@ -81,9 +81,9 @@ Plot_Posterior_Preds_by_group <- function(aug_model_output,
 
 #' Get posterior predictions for each group
 #'
-#' @param aug_model_output model output of `aug_fit_model`
-#' @param group_nm name of the group
-#' @param nSamp ...
+#' @param aug_model_output model output of `aug_fit_model`.
+#' @param group_nm a character string specifying the name of the group.
+#' @param nSamp an integer specifying the number of posterior samples to plot.
 #'
 #' @keywords internal
 Get_Posterior_Preds_by_group <- function(aug_model_output,
@@ -111,8 +111,8 @@ Get_Posterior_Preds_by_group <- function(aug_model_output,
 
 #' Extract output for posterior predictions
 #'
-#' @param aug_model_output model output of `aug_fit_model`
-#' @param group_nm ...
+#' @param aug_model_output model output of `aug_fit_model`.
+#' @param group_nm a character string specifying the name of the group.
 #' @keywords interal
 
 extract_group_output <- function(aug_model_output, group_nm){
@@ -147,8 +147,8 @@ extract_group_output <- function(aug_model_output, group_nm){
 
 #' Compile posterior predictions from model output
 #'
-#' @param group_output extracted group output from `extract_group_output`
-#' @param nSamp ...
+#' @param group_output extracted group output from `extract_group_output`.
+#' @param nSamp an integer specifying the number of posterior samples to plot.
 #' @keywords internal
 
 create_post_preds <- function(group_output, nSamp = 50){
@@ -182,7 +182,7 @@ create_post_preds <- function(group_output, nSamp = 50){
 
 #' Add label for posterior prediction plots
 #'
-#' @param group_output  extracted group output from `extract_group_output`
+#' @param group_output  extracted group output from `extract_group_output`.
 #' @keywords internal
 
 add_label <- function(group_output){

@@ -7,11 +7,11 @@
 Get_Posterior_Preds_by_group(aug_model_output, group_nm, nSamp = 50)
 }
 \arguments{
-\item{aug_model_output}{model output of \code{aug_fit_model}}
+\item{aug_model_output}{model output of \code{aug_fit_model}.}
 
-\item{group_nm}{name of the group}
+\item{group_nm}{a character string specifying the name of the group.}
 
-\item{nSamp}{...}
+\item{nSamp}{an integer specifying the number of posterior samples to plot.}
 }
 \description{
 Get posterior predictions for each group

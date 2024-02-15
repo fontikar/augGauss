@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 R package to analyse generalisation gradients using Stan.
 
-The goal of 'augGauss' is to fit an augmented Gaussian function to individual generalisation gradients and estimate its parameters in a hierarchical model. The augmented Gaussian is a Gaussian function with two width parameters that allow the function to be asymmetrical. The package estimates posteriors for 4 parameters: the mean (the peak location on the stimulus dimension), height (the height of the peak), and two width parameters (width- and width+ for the left, and right sides of the gradient).
+The goal of 'augGauss' is to provide a way to analyse gradients of generalised responding along a continuous stimulus dimension. The hierarchical model fits an "augmented" Gaussian function to individual generalisation gradients and estimates descriptive parameters. The augmented Gaussian is a Gaussian function with two width parameters that allow the function to be asymmetrical. The package uses Stan to estimate posterior distributions for 4 parameters: mean (location of the gradient peak on the stimulus dimension), height (the height of the peak), and two width parameters (width- and width+ for the left, and right sides of the gradient).
 
 ## Installation
 

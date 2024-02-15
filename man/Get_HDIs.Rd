@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_hdi.R
 \name{Get_HDIs}
 \alias{Get_HDIs}
-\title{Calculate the Highest Density Intervals and p(Region of Practical Equivalence)}
+\title{Calculate Highest Density Intervals and p(ROPE)}
 \usage{
 Get_HDIs(
   aug_model_output,
@@ -15,20 +15,20 @@ Get_HDIs(
 )
 }
 \arguments{
-\item{aug_model_output}{output from \code{aug_fit_model}}
+\item{aug_model_output}{output from \code{aug_fit_model}.}
 
-\item{ropeLow}{...}
+\item{ropeLow}{a vector of numbers specifying the lower limit of the ROPE for each of the 4 augmented Gaussian parameters in the order Mean, Height, Width-, Width+. Note: these limits are user-specified and should have good justification.}
 
-\item{ropeHigh}{...}
+\item{ropeHigh}{a vector of numbers specifying the lower limit of the ROPE for each of the 4 augmented Gaussian parameters in the order Mean, Height, Width-, Width+. Note: these limits are user-specified and should have good justification.}
 
-\item{hdiLim}{...}
+\item{hdiLim}{a number specifying the probability mass used to compute the Highest Density Interval (HDI), defaults to .95.}
 
-\item{propPost}{...}
+\item{propPost}{a number specifying the proportion of the posterior samples used to calculate p(direction) and p(ROPE), defaults to 1.}
 
-\item{save_output}{logical whether to save output}
+\item{save_output}{a logical indicating whether to save output, defaults to FALSE.}
 
-\item{path}{path where output is saved}
+\item{path}{optional path to save output.}
 }
 \description{
-Calculate the Highest Density Intervals and p(Region of Practical Equivalence)
+This function calculates Highest Density Intervals (HDIs) and proportion of posterior samples falling within the Region of Practical Equivalence (ROPE) for the 4 parameters of the augmented Gaussian (Mean, Height, Width-, Width+).
 }

@@ -2,9 +2,9 @@
 #'
 #' @param sim_data output from `simulate_data`
 #'
-#' @param dimVals dimension values, vector length of 5
-#' @param groupNames optional vector of group names
-#' @return list object of length(nGroups) containing datalists for Stan
+#' @param dimVals a vector of numbers specifying the dimension values. Must range between -0.5 and +0.5. Defaults to seq(-.5, +.5, .05).
+#' @param groupNames optional vector of group names. If NULL, group names will be read from data.
+#' @return list object of length(nGroups) containing datalists for Stan.
 #'
 #' @export
 

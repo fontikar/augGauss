@@ -7,9 +7,9 @@
 plot_simulated_data(sim_data, dimVals = seq(-0.5, +0.5, 0.05))
 }
 \arguments{
-\item{sim_data}{output from \code{simulate_data}}
+\item{sim_data}{output from \code{simulate_data}.}
 
-\item{dimVals}{dimension values, vector of length 5}
+\item{dimVals}{a vector of numbers specifying the dimension values. Must range between -0.5 and +0.5. Defaults to seq(-.5, +.5, .05).}
 }
 \description{
 Plot simulated data nicely

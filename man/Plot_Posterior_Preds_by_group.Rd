@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_posterior_preds.R
 \name{Plot_Posterior_Preds_by_group}
 \alias{Plot_Posterior_Preds_by_group}
-\title{Plot posterior predictions for a group}
+\title{Plot posterior predictions for a single group}
 \usage{
 Plot_Posterior_Preds_by_group(
   aug_model_output,
@@ -15,20 +15,20 @@ Plot_Posterior_Preds_by_group(
 )
 }
 \arguments{
-\item{aug_model_output}{model output from \code{aug_fit_model}}
+\item{aug_model_output}{model output from \code{aug_fit_model}.}
 
-\item{group_name}{character string of one group}
+\item{group_name}{a character string specifying the name of the group.}
 
-\item{nSamp}{...}
+\item{nSamp}{an integer specifying the number of posterior samples to plot.}
 
-\item{include_preds}{logical include predictions or not}
+\item{include_preds}{a logical indicating whether to include the predictions in the plot.}
 
-\item{labels}{logical whether to display labels in plot}
+\item{labels}{a logical indicating whether to display labels in the plot.}
 
-\item{save_output}{logical whether to save output}
+\item{save_output}{a logical indicating whether to save output, defaults to FALSE.}
 
-\item{path}{path to save output}
+\item{path}{optional path to save output.}
 }
 \description{
-Plot posterior predictions for a group
+Plot posterior predictions for a single group
 }

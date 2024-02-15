@@ -7,9 +7,9 @@
 extract_group_output(aug_model_output, group_nm)
 }
 \arguments{
-\item{aug_model_output}{model output of \code{aug_fit_model}}
+\item{aug_model_output}{model output of \code{aug_fit_model}.}
 
-\item{group_nm}{...}
+\item{group_nm}{a character string specifying the name of the group.}
 }
 \description{
 Extract output for posterior predictions

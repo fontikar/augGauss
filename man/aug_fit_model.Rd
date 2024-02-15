@@ -2,7 +2,7 @@
 % Please edit documentation in R/aug_fit_model.R
 \name{aug_fit_model}
 \alias{aug_fit_model}
-\title{Fit an Augmented Gaussian Function in Stan}
+\title{Fit Augmented Gaussian Function}
 \usage{
 aug_fit_model(transformed_data, ...)
 }
@@ -14,23 +14,23 @@ aug_fit_model(transformed_data, ...)
 \value{
 large list object containing:
 \itemize{
-\item \code{stanfit}: Object of class stanfit containing output from the Stan model as returned by \code{sampling}
-\item \code{diag}:
-\item \code{samples}
-\item \code{summary}
-\item \code{waic}
-\item \code{loo}
+\item \code{stanfit}: Object of class stanfit containing output from the Stan model as returned by \code{rstan::sampling()}.
+\item \code{diag}: Diagnostics as returned by \code{rstan::get_sampler_params()}.
+\item \code{samples}: posterior samples extracted from the stanfit object, as returned by \code{rstan::extract()}.
+\item \code{summary}: summary statistics computed from the posterior samples, including mean, standard error, and quantiles at 2.5\%, 50\% (median), and 97.5\%.
+\item \code{waic}: Widely Applicable Information Criterion (WAIC) computed on the log-likelihood as returned by \code{loo::waic()}.
+\item \code{loo}: Efficient approximate lave-one-out cross-validation (LOO) computed on the log-likelihood as returned by \code{loo::loo()}.
 }
 }
 \description{
-A short description...
+Fits augmented Gaussian functions to individual gradients in a Stan model.
 }
 \details{
-The data must in a list object
+The data must in a list object.
 \itemize{
-\item \code{nSubj}: Number of subjects
-\item \code{nStim}: Number of stimuli along the dimension
-\item \code{xs}: Indices of stimuli on the x axis (0 represents the CS+)
+\item \code{nSubj}: Number of subjects.
+\item \code{nStim}: Number of stimuli along the dimension.
+\item \code{xs}: Indices of stimuli on the x axis (0 represents the CS+).
 }
 }
 \examples{

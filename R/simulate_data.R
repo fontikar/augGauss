@@ -1,17 +1,17 @@
 #' Simulate augmented Gaussian gradients
 #'
 #' @description
-#' This function simulates augmented Gaussian gradients for groups of subjects
-#' @param nSubj number of subjects
-#' @param nGroups number of experimental groups
-#' @param dimVals dimension values
-#' @param M ...
-#' @param H ...
-#' @param WM ...
-#' @param WP ...
-#' @param Noise ...
-#' @param save_data logical, save data as .csv
-#' @param path path to save .csv output
+#' This function simulates augmented Gaussian gradients for groups of subjects.
+#' @param nSubj an integer specifying the number of subjects per group.
+#' @param nGroups an integer specifying the number of experimental groups.
+#' @param dimVals a vector of numbers specifying the dimension values. Must range between -0.5 and +0.5. Defaults to seq(-.5, +.5, .05).
+#' @param M a vector of length nGroups specifying the Mean parameter for each group.
+#' @param H a vector of length nGroups specifying the Height parameter for each group.
+#' @param WM a vector of length nGroups specifying the Width- parameter for each group.
+#' @param WP a vector of length nGroups specifying the Width+ parameter for each group.
+#' @param Noise a number specifying the amount of noise (SD of Gaussian) added to simulate the data.
+#' @param save_data a logical variable indicating whether to save data as .csv.
+#' @param path path to save .csv output.
 #'
 #' @return tibble of simulated data
 #' @export

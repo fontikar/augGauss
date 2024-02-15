@@ -7,9 +7,9 @@
 create_post_preds(group_output, nSamp = 50)
 }
 \arguments{
-\item{group_output}{extracted group output from \code{extract_group_output}}
+\item{group_output}{extracted group output from \code{extract_group_output}.}
 
-\item{nSamp}{...}
+\item{nSamp}{an integer specifying the number of posterior samples to plot.}
 }
 \description{
 Compile posterior predictions from model output

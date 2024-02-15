@@ -7,7 +7,7 @@
 add_label(group_output)
 }
 \arguments{
-\item{group_output}{extracted group output from \code{extract_group_output}}
+\item{group_output}{extracted group output from \code{extract_group_output}.}
 }
 \description{
 Add label for posterior prediction plots

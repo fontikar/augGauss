@@ -18,31 +18,31 @@ simulate_data(
 )
 }
 \arguments{
-\item{nSubj}{number of subjects}
+\item{nSubj}{an integer specifying the number of subjects per group.}
 
-\item{nGroups}{number of experimental groups}
+\item{nGroups}{an integer specifying the number of experimental groups.}
 
-\item{dimVals}{dimension values}
+\item{dimVals}{a vector of numbers specifying the dimension values. Must range between -0.5 and +0.5. Defaults to seq(-.5, +.5, .05).}
 
-\item{M}{...}
+\item{M}{a vector of length nGroups specifying the Mean parameter for each group.}
 
-\item{H}{...}
+\item{H}{a vector of length nGroups specifying the Height parameter for each group.}
 
-\item{WM}{...}
+\item{WM}{a vector of length nGroups specifying the Width- parameter for each group.}
 
-\item{WP}{...}
+\item{WP}{a vector of length nGroups specifying the Width+ parameter for each group.}
 
-\item{Noise}{...}
+\item{Noise}{a number specifying the amount of noise (SD of Gaussian) added to simulate the data.}
 
-\item{save_data}{logical, save data as .csv}
+\item{save_data}{a logical variable indicating whether to save data as .csv.}
 
-\item{path}{path to save .csv output}
+\item{path}{path to save .csv output.}
 }
 \value{
 tibble of simulated data
 }
 \description{
-This function simulates augmented Gaussian gradients for groups of subjects
+This function simulates augmented Gaussian gradients for groups of subjects.
 }
 \examples{
 simulate_data

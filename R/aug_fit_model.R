@@ -1,23 +1,23 @@
-#' @title Fit an Augmented Gaussian Function in Stan
+#' @title Fit Augmented Gaussian Function
 #'
 #' @description
-#' A short description...
+#' Fits augmented Gaussian functions to individual gradients in a Stan model.
 #'
 #' @param transformed_data data list object created using `transform_data()`
 #'
 #' @param ... arguments passed to rstan::sampling()
 #' @details
-#' The data must in a list object
-#' - `nSubj`: Number of subjects
-#' - `nStim`: Number of stimuli along the dimension
-#' - `xs`: Indices of stimuli on the x axis (0 represents the CS+)
+#' The data must in a list object.
+#' - `nSubj`: Number of subjects.
+#' - `nStim`: Number of stimuli along the dimension.
+#' - `xs`: Indices of stimuli on the x axis (0 represents the CS+).
 #' @return large list object containing:
-#' - `stanfit`: Object of class stanfit containing output from the Stan model as returned by `sampling`
-#' - `diag`:
-#' - `samples`
-#' - `summary`
-#' - `waic`
-#' - `loo`
+#' - `stanfit`: Object of class stanfit containing output from the Stan model as returned by `rstan::sampling()`.
+#' - `diag`: Diagnostics as returned by `rstan::get_sampler_params()`.
+#' - `samples`: posterior samples extracted from the stanfit object, as returned by `rstan::extract()`.
+#' - `summary`: summary statistics computed from the posterior samples, including mean, standard error, and quantiles at 2.5%, 50% (median), and 97.5%.
+#' - `waic`: Widely Applicable Information Criterion (WAIC) computed on the log-likelihood as returned by `loo::waic()`.
+#' - `loo`: Efficient approximate lave-one-out cross-validation (LOO) computed on the log-likelihood as returned by `loo::loo()`.
 #' @author Jessica Lee
 #' @examples
 #' \dontrun{

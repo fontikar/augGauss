@@ -1,13 +1,15 @@
 
-#' Calculate the Highest Density Intervals and p(Region of Practical Equivalence)
+#' Calculate Highest Density Intervals and p(ROPE)
 #'
-#' @param aug_model_output  output from `aug_fit_model`
-#' @param ropeLow ...
-#' @param ropeHigh ...
-#' @param hdiLim ...
-#' @param propPost ...
-#' @param save_output logical whether to save output
-#' @param path path where output is saved
+#' @description
+#' This function calculates Highest Density Intervals (HDIs) and proportion of posterior samples falling within the Region of Practical Equivalence (ROPE) for the 4 parameters of the augmented Gaussian (Mean, Height, Width-, Width+).
+#' @param aug_model_output  output from `aug_fit_model`.
+#' @param ropeLow a vector of numbers specifying the lower limit of the ROPE for each of the 4 augmented Gaussian parameters in the order Mean, Height, Width-, Width+. Note: these limits are user-specified and should have good justification.
+#' @param ropeHigh a vector of numbers specifying the lower limit of the ROPE for each of the 4 augmented Gaussian parameters in the order Mean, Height, Width-, Width+. Note: these limits are user-specified and should have good justification.
+#' @param hdiLim a number specifying the probability mass used to compute the Highest Density Interval (HDI), defaults to .95.
+#' @param propPost a number specifying the proportion of the posterior samples used to calculate p(direction) and p(ROPE), defaults to 1.
+#' @param save_output a logical indicating whether to save output, defaults to FALSE.
+#' @param path optional path to save output.
 #'
 #' @export
 
@@ -75,16 +77,18 @@ Get_HDIs <- function(aug_model_output,
 
 }
 
-#' Calculate the Highest Density Intervals and p(Region of Practical Equivalence) for HDIparams for differences between groups
+#' Calculate Highest Density Intervals for differences between two groups
 #'
+#'#' @description
+#' This function calculates Highest Density Intervals (HDIs) for differences in parameters between two groups.
 #' @param aug_model_output output from `aug_fit_model`
-#' @param comparison vector length of 2 of names of groups to compare
+#' @param comparison vector of length 2 of names of groups to compare. These group names must match the names in the data.
 #' @param ropeLowDiffs ...
 #' @param ropeHighDiffs ...
-#' @param hdiLim ...
-#' @param propPost ...
-#' @param save_output logical whether to save output
-#' @param path path where output is saved
+#' @param a number specifying the probability mass used to compute the Highest Density Interval (HDI), defaults to .95.
+#' @param propPost a number specifying the proportion of the posterior samples used to calculate p(direction) and p(ROPE), defaults to 1.
+#' @param save_output a logical indicating whether to save output, defaults to FALSE.
+#' @param path optional path to save output.
 #'
 #' @export
 

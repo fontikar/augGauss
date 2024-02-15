@@ -1,7 +1,7 @@
 #' Plot simulated data nicely
 #'
-#' @param sim_data output from `simulate_data`
-#' @param dimVals dimension values, vector of length 5
+#' @param sim_data output from `simulate_data`.
+#' @param dimVals a vector of numbers specifying the dimension values. Must range between -0.5 and +0.5. Defaults to seq(-.5, +.5, .05).
 #'
 #' @export
 plot_simulated_data <- function(sim_data, dimVals = seq(-.5, +.5, .05)){
